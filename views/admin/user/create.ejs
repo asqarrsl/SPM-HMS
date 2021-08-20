@@ -1,0 +1,96 @@
+<% layout('layouts/boilerplate') %> 
+
+<!-- BEGIN: Content-->
+<div class="app-content content ">
+    <div class="content-overlay"></div>
+    <div class="header-navbar-shadow"></div>
+    <div class="content-wrapper">
+        <div class="content-header row">
+            <div class="content-header-left col-md-9 col-12 mb-2">
+                <div class="row breadcrumbs-top">
+                    <div class="col-12">
+                        <h2 class="content-header-title float-left mb-0">Create users</h2>
+                        <div class="breadcrumb-wrapper">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="/admin/dashboard">Admin</a>
+                                </li>
+                                <li class="breadcrumb-item"><a href="/admin/user">Users</a>
+                                </li>
+                                <li class="breadcrumb-item active">Create
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content-body">
+            <!-- Basic Inputs start -->
+            <section id="basic-input">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Create New Users</h4>
+                            </div>
+                            <div class="card-body">
+                                <form action="/admin/user/" method="post">
+                                    <div class="row">
+                                        <div class="col-xl-4 col-md-6 col-12 mb-1">
+                                            <div class="form-group">
+                                                <label for="fname">First Name</label>
+                                                <input type="text" class="form-control" id="fname" name="user[fname]" placeholder="First Name" />
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-4 col-md-6 col-12 mb-1">
+                                            <div class="form-group">
+                                                <label for="lname">Last Name</label>
+                                                <input type="text" class="form-control" id="lname" name="user[lname]" placeholder="Last Name" />
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-4 col-md-6 col-12 mb-1">
+                                            <div class="form-group">
+                                                <label for="role">Last Name</label>
+                                                <select class="form-control" name="user[role]" id="role">
+                                                    <option value="a">Admin</option>
+                                                    <option value="r">Receptionist</option>
+                                                </select>
+                                            
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-4 col-md-6 col-12 mb-1">
+                                            <div class="form-group">
+                                                <label for="email">Email</label>
+                                                <input type="text" class="form-control" id="email" name="user[email]" placeholder="Enter email" />
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-4 col-md-6 col-12 mb-1">
+                                            <div class="form-group">
+                                                <label for="username">Username</label>
+                                                <input type="text" class="form-control" id="username" name="user[username]" placeholder="Username" />
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-4 col-md-6 col-12 mb-1">
+                                            <div class="form-group">
+                                                <label for="password">Password</label>
+                                                <input type="password" class="form-control" id="password" name="user[password]" placeholder="Password" />
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-4 col-md-6 col-12 mb-1">
+                                            <div class="form-group">
+                                                <button class="btn btn-primary" type="submit">Submit</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Basic Inputs end -->
+            </div>
+
+    </div>
+</div>
+<!-- END: Content-->
