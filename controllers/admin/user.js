@@ -13,12 +13,12 @@ module.exports.alldata = async (req, res) => {
 
 module.exports.register = async (req, res) => {
   try {
-    const { fname,lname,role,email, username, password } = req.body.user;
-    const newUser = new User({ fname,lname,email, username, role });
+    const { fname, lname, role, email, username, password } = req.body.user;
+    const newUser = new User({ fname, lname, email, username, role });
     const registeredUser = await User.register(newUser, password);
     req.login(registeredUser, (err) => {
       if (err) return next(err);
-      req.flash("success", "Welcome to Yelp Camp!");
+      req.flash("success", "Welcome to SPM HMS!");
       res.redirect("/admin/user");
     });
   } catch (e) {
@@ -27,30 +27,30 @@ module.exports.register = async (req, res) => {
   }
 };
 
-module.exports.edit = async (req,res)=>{  
+module.exports.edit = async (req, res) => {
   const user = await User.findById(req.params.id);
-  if(!user){
-      req.flash('error',"Couldn't find that User!");
-      return res.redirect(`/admin/user`);
+  if (!user) {
+    req.flash("error", "Couldn't find that User!");
+    return res.redirect(`/admin/user`);
   }
-  res.render('admin/user/edit',{user});
-}
+  res.render("admin/user/edit", { user });
+};
 
-module.exports.update = async (req,res)=>{
-  const {id} = req.params
-  const users = await User.findByIdAndUpdate(id, {...req.body.user});
+module.exports.update = async (req, res) => {
+  const { id } = req.params;
+  const users = await User.findByIdAndUpdate(id, { ...req.body.user });
   await users.save();
 
-  req.flash('success','Successfully Updated the Users!');
+  req.flash("success", "Successfully Updated the Users!");
   res.redirect(`/admin/user/`);
-}
+};
 
-module.exports.delete = async (req,res)=>{
-  const {id} = req.params
+module.exports.delete = async (req, res) => {
+  const { id } = req.params;
   const user = await User.findById(id);
   user.status = 4;
   await user.save();
 
-  req.flash('success','Successfully Deleted a User!');
+  req.flash("success", "Successfully Deleted a User!");
   res.redirect(`/admin/user`);
-}
+};
