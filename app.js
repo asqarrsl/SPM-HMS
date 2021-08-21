@@ -20,10 +20,6 @@ const adminUserRoutes = require("./routes/admin/users");
 const adminCustomerRoutes = require("./routes/admin/customer");
 const adminCountryRoutes = require("./routes/admin/country");
 const adminStateRoutes = require("./routes/admin/state");
-// const adminRoomRoutes = require("./routes/admin/room");
-// const adminPackageRoutes = require("./routes/admin/package");
-// const adminAmmenityRoutes = require("./routes/admin/ammenities");
-// const adminFacilityRoutes = require("./routes/admin/facilities");
 const helmet = require("helmet");
 
 const dbUrl = process.env.DB_URL;
@@ -35,12 +31,6 @@ mongoose.connect(dbUrl, {
   useUnifiedTopology: true,
   useFindAndModify: false,
 });
-// mongoose.connect(dbUrl,{
-//     useNewUrlParser:true,
-//     useCreateIndex:true,
-//     useUnifiedTopology:true,
-//     useFindAndModify:false
-// });
 
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error"));
