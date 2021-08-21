@@ -3,9 +3,11 @@ const User = require("../../models/user");
 module.exports.index = (req, res) => {
   res.render("admin/user/index");
 };
+
 module.exports.create = (req, res) => {
   res.render("admin/user/create");
 };
+
 module.exports.alldata = async (req, res) => {
   var data = await User.find({});
   res.send({ data });

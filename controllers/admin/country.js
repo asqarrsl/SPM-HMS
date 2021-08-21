@@ -1,5 +1,4 @@
 const Country = require("../../models/country");
-const State = require("../../models/state");
 
 module.exports.create = async (req, res) => {
   res.render("admin/country/create");
