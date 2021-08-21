@@ -1,0 +1,80 @@
+<% layout('layouts/boilerplate') %> 
+
+<!-- BEGIN: Content-->
+<div class="app-content content ">
+    <div class="content-overlay"></div>
+    <div class="header-navbar-shadow"></div>
+    <div class="content-wrapper">
+        <div class="content-header row">
+            <div class="content-header-left col-md-9 col-12 mb-2">
+                <div class="row breadcrumbs-top">
+                    <div class="col-12">
+                        <h2 class="content-header-title float-left mb-0">Add New Facility</h2>
+                        <div class="breadcrumb-wrapper">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="/admin/dashboard">Admin</a>
+                                </li>
+                                <li class="breadcrumb-item"><a href="/admin/facility">Facility</a>
+                                </li>
+                                <li class="breadcrumb-item active">Create
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content-body">
+            <!-- Basic Inputs start -->
+            <section id="basic-input">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Create New Facility</h4>
+                            </div>
+                            <div class="card-body">
+                                <form action="/admin/facility/" method="post">
+                                    <div class="row">
+                                        <div class="col-xl-4 col-md-6 col-12 mb-1">
+                                            <div class="form-group">
+                                                <label for="name">Name</label>
+                                                <input type="text" class="form-control" id="name" name="facility[name]" placeholder="Name" />
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-4 col-md-6 col-12 mb-1">
+                                            <div class="form-group">
+                                                <label for="duration">Duration</label>
+                                                <input type="text" class="form-control" id="duration" name="facility[duration]" placeholder="Duration" />
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-4 col-md-6 col-12 mb-1">
+                                            <div class="form-group">
+                                                <label for="headcount">Head Count</label>
+                                                <input type="text" class="form-control" id="headcount" name="facility[headcount]" placeholder="Head Count" />
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-4 col-md-6 col-12 mb-1">
+                                            <div class="form-group">
+                                                <label for="price">Price</label>
+                                                <input type="text" class="form-control" id="price" name="facility[price]" placeholder="Head Count" />
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-12 col-md-12 col-12 mb-1">
+                                            <div class="form-group">
+                                                <button class="btn btn-primary" type="submit">Submit</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Basic Inputs end -->
+            </div>
+
+    </div>
+</div>
+<!-- END: Content-->
