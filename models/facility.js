@@ -1,21 +1,24 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const facilitySchema = new Schema({
-    name:String,
-    duration:String,
-    headcount:String,
-    price:String,
-    availability:{
-        type:String,
-        default : 1
+const facilitySchema = new Schema(
+  {
+    name: String,
+    duration: String,
+    headcount: String,
+    price: String,
+    availability: {
+      type: String,
+      default: 1,
     },
-    status:{
-        type:String,
-        default : 1
+    status: {
+      type: String,
+      default: 1,
     },
-},{
-    timestamps: true
-});
+  },
+  {
+    timestamps: true,
+  }
+);
 
-module.exports = mongoose.model('Facility',facilitySchema);
+module.exports = mongoose.model("Facility", facilitySchema);
