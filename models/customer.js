@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-// const passportLocalMongoose = require('passport-local-mongoose');
 
 const customerSchema = new Schema({
     fname:String,
@@ -11,8 +10,6 @@ const customerSchema = new Schema({
     dob:Date,
     address:String,
     city:String,
-    // state:String,
-    // country:String,
     state:{
         type:Schema.Types.ObjectId,
         ref:'State'
@@ -28,7 +25,5 @@ const customerSchema = new Schema({
 },{
     timestamps: true
 });
-
-// customerSchema.plugin(passportLocalMongoose);
 
 module.exports = mongoose.model('Customer',customerSchema)
