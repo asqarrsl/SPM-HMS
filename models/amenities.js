@@ -1,7 +1,11 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+
+
+
 const amenitiesSchema = new Schema({
+
     name:String,
     quantity:String,
     price_per_unit:String,
@@ -16,5 +20,6 @@ const amenitiesSchema = new Schema({
 },{
     timestamps: true
 });
+
 
 module.exports = mongoose.model('Amenities',amenitiesSchema);
