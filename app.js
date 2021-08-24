@@ -21,9 +21,9 @@ const adminCustomerRoutes = require("./routes/admin/customer");
 const adminCountryRoutes = require("./routes/admin/country");
 const adminStateRoutes = require("./routes/admin/state");
 const adminRoomRoutes = require("./routes/admin/room");
-// const adminPackageRoutes = require("./routes/admin/package");
-// const adminAmmenityRoutes = require("./routes/admin/ammenities");
-// const adminFacilityRoutes = require("./routes/admin/facilities");
+const adminPackageRoutes = require("./routes/admin/package");
+const adminAmmenityRoutes = require("./routes/admin/ammenities");
+const adminFacilityRoutes = require("./routes/admin/facilities");
 const helmet = require("helmet");
 
 const dbUrl = process.env.DB_URL;
@@ -152,8 +152,6 @@ app.get("/admin/dashboard", (req, res) => {
   res.render("admin/dashboard/dashboard");
 });
 
-
-
 app.get("/fakeuser", async (req, res) => {
   const user = new User({ email: "asqarrsl@gmail.com", username: "ashique" });
   const newUser = await User.register(user, "asqarrsl");
@@ -166,9 +164,9 @@ app.use("/admin/customer", adminCustomerRoutes);
 app.use("/admin/country", adminCountryRoutes);
 app.use("/admin/state", adminStateRoutes);
 app.use("/admin/room", adminRoomRoutes);
-// app.use("/admin/package", adminPackageRoutes);
-// app.use("/admin/ammenity", adminAmmenityRoutes);
-// app.use("/admin/facility", adminFacilityRoutes);
+app.use("/admin/package", adminPackageRoutes);
+app.use("/admin/ammenity", adminAmmenityRoutes);
+app.use("/admin/facility", adminFacilityRoutes);
 
 app.all("*", (req, res, next) => {
   next(new ExpressError("Page Not Found", 404));
