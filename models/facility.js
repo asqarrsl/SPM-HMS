@@ -22,4 +22,3 @@ const facilitySchema = new Schema(
 );
 
 module.exports = mongoose.model("Facility", facilitySchema);
-

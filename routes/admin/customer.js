@@ -1,6 +1,7 @@
 const express = require("express");
 
 const router = express.Router();
+
 const customerController = require("../../controllers/admin/customer");
 const catchAsync = require("../../utils/catchAsync");
 
