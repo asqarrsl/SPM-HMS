@@ -1,0 +1,89 @@
+<% layout('layouts/boilerplate') %> 
+
+<!-- BEGIN: Content-->
+<div class="app-content content ">
+    <div class="content-overlay"></div>
+    <div class="header-navbar-shadow"></div>
+    <div class="content-wrapper">
+        <div class="content-header row">
+            <div class="content-header-left col-md-9 col-12 mb-2">
+                <div class="row breadcrumbs-top">
+                    <div class="col-12">
+                        <h2 class="content-header-title float-left mb-0">Add New Room</h2>
+                        <div class="breadcrumb-wrapper">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="/admin/dashboard">Admin</a>
+                                </li>
+                                <li class="breadcrumb-item"><a href="/admin/room">Room</a>
+                                </li>
+                                <li class="breadcrumb-item active">Create
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content-body">
+            <!-- Basic Inputs start -->
+            <section id="basic-input">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Create New Room</h4>
+                            </div>
+                            <div class="card-body">
+                                <form action="/admin/room/" method="post">
+                                    <div class="row">
+                                        <div class="col-xl-4 col-md-6 col-12 mb-1">
+                                            <div class="form-group">
+                                                <label for="name">Room Number</label>
+                                                <input type="text" class="form-control" id="name" name="room[number]" placeholder="Room Number" />
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-4 col-md-6 col-12 mb-1">
+                                            <div class="form-group">
+                                                <label for="name">Room Charge</label>
+                                                <input type="text" class="form-control" id="name" name="room[charge]" placeholder="Room Charge" />
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-4 col-md-6 col-12 mb-1">
+                                            <div class="form-group">
+                                                <label for="name">Head Count</label>
+                                                <input type="text" class="form-control" id="name" name="room[headcount]" placeholder="Head Count" />
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-4 col-md-6 col-12 mb-1">
+                                            <div class="form-group">
+                                                <label for="name">Image </label>
+                                                <input type="text" class="form-control" id="name" name="room[image]" placeholder="Image" />
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-4 col-md-6 col-12 mb-1">
+                                            <div class="form-group">
+                                                <label for="type">Type</label>
+                                                <select class="form-control" id="type" name="room[type]">
+                                                    <option value="Seasonal">Seasonal</option>
+                                                    <option value="Regular">Regular</option>
+                                                </select>
+                                            </div>
+                                        </div>                                       
+                                        <div class="col-xl-12 col-md-12 col-12 mb-1">
+                                            <div class="form-group">
+                                                <button class="btn btn-primary" type="submit">Submit</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Basic Inputs end -->
+            </div>
+
+    </div>
+</div>
+<!-- END: Content-->
