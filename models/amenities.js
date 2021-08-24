@@ -20,4 +20,4 @@ const amenitiesSchema = new Schema(
   }
 );
 
-module.exports = mongoose.model("Amenities", amenitiesSchema);
+module.exports = mongoose.model('Amenities',amenitiesSchema);
