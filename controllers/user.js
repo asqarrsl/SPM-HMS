@@ -12,7 +12,7 @@ module.exports.register = async (req, res) => {
     req.login(registeredUser, (err) => {
       if (err) return next(err);
       req.flash("success", "Welcome to SPM HMS!");
-      res.redirect("/campgrounds");
+      res.redirect("/admin/index");
     });
   } catch (e) {
     req.flash("error", e.message);
@@ -27,7 +27,7 @@ module.exports.renderLogin = (req, res) => {
 module.exports.login = (req, res) => {
   req.flash("success", "welcome back!");
   console.log(req.session);
-  const redirectUrl = req.session.returnTo || "/admin";
+  const redirectUrl = req.session.returnTo || "/admin/index";
   delete req.session.returnTo;
   res.redirect(redirectUrl);
 };
