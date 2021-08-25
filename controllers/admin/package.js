@@ -9,7 +9,7 @@ module.exports.create = async (req, res) => {
 };
 
 module.exports.alldata = async (req, res) => {
-  var data = await Package.find({});
+  var data = await Package.find({status:1});
   res.send({ data });
 };
 
