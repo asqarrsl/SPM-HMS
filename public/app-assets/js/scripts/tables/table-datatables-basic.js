@@ -54,8 +54,8 @@ $(function () {
             var $status = {
               1: { title: "Active", class: "badge-light-success" },
               2: { title: "Pending", class: " badge-light-primary" },
-              3: { title: "Rejected", class: " badge-light-danger" },
-              4: { title: "Deleted", class: " badge-light-warning" },
+              3: { title: "Rejected", class: " badge-light-warning" },
+              4: { title: "Deleted", class: " badge-light-danger" },
             };
             if (typeof $status[$status_number] === "undefined") {
               return data;
@@ -436,8 +436,8 @@ $(function () {
             var $status = {
               1: { title: "Active", class: "badge-light-success" },
               2: { title: "Pending", class: " badge-light-primary" },
-              3: { title: "Rejected", class: " badge-light-danger" },
-              4: { title: "Deleted", class: " badge-light-warning" },
+              3: { title: "Rejected", class: " badge-light-warning" },
+              4: { title: "Deleted", class: " badge-light-danger" },
             };
             if (typeof $status[$status_number] === "undefined") {
               return data;
@@ -628,8 +628,8 @@ $(function () {
             var $status = {
               1: { title: "Active", class: "badge-light-success" },
               2: { title: "Pending", class: " badge-light-primary" },
-              3: { title: "Rejected", class: " badge-light-danger" },
-              4: { title: "Deleted", class: " badge-light-warning" },
+              3: { title: "Rejected", class: " badge-light-warning" },
+              4: { title: "Deleted", class: " badge-light-danger" },
             };
             if (typeof $status[$status_number] === "undefined") {
               return data;
@@ -824,8 +824,8 @@ $(function () {
             var $status = {
               1: { title: "Active", class: "badge-light-success" },
               2: { title: "Pending", class: " badge-light-primary" },
-              3: { title: "Rejected", class: " badge-light-danger" },
-              4: { title: "Deleted", class: " badge-light-warning" },
+              3: { title: "Rejected", class: " badge-light-warning" },
+              4: { title: "Deleted", class: " badge-light-danger" },
             };
             if (typeof $status[$status_number] === "undefined") {
               return data;
@@ -1014,8 +1014,8 @@ $(function () {
             var $status = {
               1: { title: "Active", class: "badge-light-success" },
               2: { title: "Pending", class: " badge-light-primary" },
-              3: { title: "Rejected", class: " badge-light-danger" },
-              4: { title: "Deleted", class: " badge-light-warning" },
+              3: { title: "Rejected", class: " badge-light-warning" },
+              4: { title: "Deleted", class: " badge-light-danger" },
             };
             if (typeof $status[$status_number] === "undefined") {
               return data;
