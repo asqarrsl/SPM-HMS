@@ -61,8 +61,10 @@
                                             <div class="form-group">
                                                 <label for="facilities">Facilities</label>
                                                 <select class="form-control" id="facilities" value="<%= package.facilities  %>" name="package[facilities]">
-                                                    <option value="Seasonal">Seasonal</option>
-                                                    <option value="Regular">Regular</option>
+                                                    <option label="Select Facilities"></option>
+                                                    <% for(let facility of data['facility']){ %>
+                                                        <option value="<%= facility._id %> "><%= facility.name  %> </option>
+                                                    <%  } %>
                                                 </select>
                                             </div>
                                         </div>
@@ -70,8 +72,10 @@
                                             <div class="form-group">
                                                 <label for="ammenities">Ammenities</label>
                                                 <select class="form-control" id="ammenities" value="<%= package.ammenities  %>" name="package[ammenities]">
-                                                    <option value="Seasonal">Seasonal</option>
-                                                    <option value="Regular">Regular</option>
+                                                    <option label="Select Ammenities"></option>
+                                                    <% for(let amenities of data['amenities']){ %>
+                                                        <option value="<%= amenities._id %>"><%= amenities.name  %> </option>
+                                                    <%  } %>
                                                 </select>
                                             </div>
                                         </div>

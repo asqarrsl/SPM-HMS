@@ -1,15 +1,20 @@
 const Package = require("../../models/package");
+const Facility = require("../../models/facility");
+const Amenities = require("../../models/amenities");
 
 module.exports.index = (req, res) => {
   res.render("admin/package/index");
 };
 
 module.exports.create = async (req, res) => {
-  res.render("admin/package/create");
+  var data = [];
+  data["facility"] = await Facility.find({ status: 1 });
+  data["amenities"] = await Amenities.find({ status: 1 });
+  res.render("admin/package/create", { data });
 };
 
 module.exports.alldata = async (req, res) => {
-  var data = await Package.find({status:1});
+  var data = await Package.find({ status: 1 });
   res.send({ data });
 };
 
@@ -22,11 +27,14 @@ module.exports.store = async (req, res) => {
 };
 module.exports.edit = async (req, res) => {
   const package = await Package.findById(req.params.id);
+  var data = [];
+  data["facility"] = await Facility.find({ status: 1 });
+  data["amenities"] = await Amenities.find({ status: 1 });
   if (!package) {
     req.flash("error", "Couldn't find that package!");
     return res.redirect(`/admin/package`);
   }
-  res.render("admin/package/edit", { package });
+  res.render("admin/package/edit", { package, data });
 };
 
 module.exports.update = async (req, res) => {
