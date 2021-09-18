@@ -78,6 +78,17 @@
                                                 </select>
                                             </div>
                                         </div>
+                                        <div class="col-md-12"></div>
+
+                                        <% room.images.forEach((image,i)=>{ %>
+                                        <div class="col-xl-4 col-md-6 col-12 mb-1">
+                                            <img src="<%= image.thumbnail  %>" class="img-thumbnail" alt="" srcset="">
+                                            <div class="custom-control custom-control-success custom-checkbox mb-1 col-md-6">
+                                                <input type="checkbox" class="custom-control-input" name="deleteImages[]" id="colorCheck<%= i  %>" value="<%= image.filename  %>" >
+                                                <label class="custom-control-label" for="colorCheck<%= i  %>">Delete ?</label>
+                                            </div>
+                                        </div>
+                                        <% }) %>
                                         <div class="col-xl-12 col-md-12 col-12 mb-1">
                                             <div class="form-group">
                                                 <button class="btn btn-primary" type="submit">Submit</button>

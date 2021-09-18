@@ -27,7 +27,18 @@ module.exports.renderLogin = (req, res) => {
 module.exports.login = (req, res) => {
   req.flash("success", "welcome back!");
   console.log(req.session);
-  const redirectUrl = req.session.returnTo || "/admin/index";
+  let redirectUrl = req.session.returnTo;
+  if (req.user.role === "a") {
+    console.log(req.user.role);
+    redirectUrl = req.session.returnTo || "/admin/index";
+  }else if(req.user.role === "r"){
+    console.log("s"+req.user.role);
+    redirectUrl = req.session.returnTo || "/receptionist/index";
+  }else{
+    redirectUrl = req.session.returnTo || "/";
+
+  }
+  // const redirectUrl = req.session.returnTo || "/admin/index";
   delete req.session.returnTo;
   res.redirect(redirectUrl);
 };

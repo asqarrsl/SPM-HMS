@@ -16,7 +16,7 @@ module.exports.create = async (req, res) => {
 };
 
 module.exports.alldata = async (req, res) => {
-  var data = await Customer.find({status:1});
+  var data = await Customer.find({status:1}).populate('state').populate('country');
   res.send({ data });
 };
 

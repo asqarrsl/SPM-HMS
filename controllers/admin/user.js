@@ -18,11 +18,11 @@ module.exports.register = async (req, res) => {
     const { fname, lname, role, email, username, password } = req.body.user;
     const newUser = new User({ fname, lname, email, username, role });
     const registeredUser = await User.register(newUser, password);
-    req.login(registeredUser, (err) => {
-      if (err) return next(err);
-      req.flash("success", "Welcome to SPM HMS!");
-      res.redirect("/admin/user");
-    });
+    // req.login(registeredUser, (err) => {
+    //   if (err) return next(err);
+    //   req.flash("success", "Welcome to SPM HMS!");
+    res.redirect("/admin/user");
+    // });
   } catch (e) {
     req.flash("error", e.message);
     res.redirect("/admin/user/create");

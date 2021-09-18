@@ -34,7 +34,7 @@
                                 <h4 class="card-title">Create New Room</h4>
                             </div>
                             <div class="card-body">
-                                <form action="/admin/room/" method="post">
+                                <form action="/admin/room/" method="post" enctype="multipart/form-data">
                                     <div class="row">
                                         <div class="col-xl-4 col-md-6 col-12 mb-1">
                                             <div class="form-group">
@@ -58,10 +58,21 @@
                                             </div>
                                         </div>
                                         <div class="col-xl-4 col-md-6 col-12 mb-1">
+                                            
                                             <div class="form-group">
                                                 <label for="name">Image </label>
-                                                <input type="text" class="form-control" id="name" name="room[image]"
-                                                    placeholder="Image" />
+                                                <div class="input-group mb-3">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text"
+                                                            id="inputGroupFileAddon01">Image</span>
+                                                    </div>
+                                                    <div class="custom-file">
+                                                        <input type="file" class="custom-file-input" id="image" name="image"
+                                                            aria-describedby="inputGroupFileAddon01" multiple>
+                                                        <label class="custom-file-label" for="room[image]">Choose
+                                                            Image</label>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col-xl-4 col-md-6 col-12 mb-1">
