@@ -3,7 +3,7 @@ const Country = require("../../models/country");
 const State = require("../../models/state");
 
 module.exports.index = (req, res) => {
-  res.render("admin/customer/index");
+  res.render("receptionist/customer/index");
 };
 
 module.exports.create = async (req, res) => {
@@ -12,11 +12,12 @@ module.exports.create = async (req, res) => {
   let country = await Country.find({});
   data["states"] = state;
   data["countries"] = country;
-  res.render("admin/customer/create", { data });
+  res.render("receptionist/customer/create", { data });
 };
 
 module.exports.alldata = async (req, res) => {
   var data = await Customer.find({status:1}).populate('state').populate('country');
+  console.log(data);
   res.send({ data });
 };
 
@@ -25,7 +26,7 @@ module.exports.store = async (req, res) => {
   await customer.save();
 
   req.flash("success", "Successfully made a Customer!");
-  res.redirect(`/admin/customer`);
+  res.redirect(`/receptionist/customer`);
 };
 module.exports.edit = async (req, res) => {
   const customer = await Customer.findById(req.params.id);
@@ -33,7 +34,7 @@ module.exports.edit = async (req, res) => {
     req.flash("error", "Couldn't find that Customer!");
     return res.redirect(`/admin/customer`);
   }
-  res.render("admin/customer/edit", { customer });
+  res.render("receptionist/customer/edit", { customer });
 };
 
 module.exports.update = async (req, res) => {
@@ -44,15 +45,15 @@ module.exports.update = async (req, res) => {
   await customer.save();
 
   req.flash("success", "Successfully Updated the Customer!");
-  res.redirect(`/admin/customer/`);
+  res.redirect(`/receptionist/customer/`);
 };
 
-module.exports.delete = async (req, res) => {
-  const { id } = req.params;
-  const customer = await Customer.findById(id);
-  customer.status = 4;
-  await customer.save();
+// module.exports.delete = async (req, res) => {
+//   const { id } = req.params;
+//   const customer = await Customer.findById(id);
+//   customer.status = 4;
+//   await customer.save();
 
-  req.flash("success", "Successfully Deleted a Customer!");
-  res.redirect(`/admin/customer`);
-};
+//   req.flash("success", "Successfully Deleted a Customer!");
+//   res.redirect(`/admin/customer`);
+// };
