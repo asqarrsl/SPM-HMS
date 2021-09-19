@@ -7,7 +7,9 @@ $(function () {
 
   var dt_basic_table_user = $(".datatables-basic-user"),
     dt_basic_table_customer = $(".datatables-basic-customer"),
+    dt_basic_table_customer = $(".datatables-basic-customer"),
     dt_basic_table_customer_rep = $(".datatables-basic-customer-rep"),
+    dt_basic_table_booking = $(".datatables-basic-booking"),
     dt_basic_table_room = $(".datatables-basic-room"),
     dt_basic_table_ammenity = $(".datatables-basic-ammenity"),
     dt_basic_table_facility = $(".datatables-basic-facility"),
@@ -937,6 +939,182 @@ $(function () {
           className: "create-new btn btn-primary",
           attr: {
             onclick: "location.href='/admin/customer/create';",
+          },
+          init: function (api, node, config) {
+            $(node).removeClass("btn-secondary");
+          },
+        },
+      ],
+      responsive: {
+        details: {
+          display: $.fn.dataTable.Responsive.display.modal({
+            header: function (row) {
+              var data = row.data();
+              return "Details of " + data["fname"];
+            },
+          }),
+          type: "column",
+          renderer: function (api, rowIdx, columns) {
+            var data = $.map(columns, function (col, i) {
+              console.log(columns);
+              return col.title !== "" // ? Do not show row in modal popup if title is blank (for check box)
+                ? '<tr data-dt-row="' +
+                    col.rowIndex +
+                    '" data-dt-column="' +
+                    col.columnIndex +
+                    '">' +
+                    "<td>" +
+                    col.title +
+                    ":" +
+                    "</td> " +
+                    "<td>" +
+                    col.data +
+                    "</td>" +
+                    "</tr>"
+                : "";
+            }).join("");
+
+            return data ? $('<table class="table"/>').append(data) : false;
+          },
+        },
+      },
+      language: {
+        paginate: {
+          // remove previous & next text from pagination
+          previous: "&nbsp;",
+          next: "&nbsp;",
+        },
+      },
+    });
+    $("div.head-label").html('<h6 class="mb-0">Customer Details</h6>');
+  }
+  if (dt_basic_table_booking.length) {
+    var dt_basic = dt_basic_table_booking.DataTable({
+      ajax: "/receptionist/booking/all",
+      columns: [
+        { data: "" },
+        { data: "customer" },
+        { data: "room" },
+        { data: "amenities" },
+        { data: "facilities" },
+        { data: "check_in" },
+        { data: "checkout" },
+        { data: "" },
+      ],
+      columnDefs: [
+        {
+          // For Checkboxes
+          targets: 0,
+          render: function (data, type, full, meta) {
+            return meta.row + 1;
+          },
+        },
+        {
+          // For Checkboxes
+          targets: 3,
+          render: function (data, type, full, meta) {
+            return data;
+          },
+        },
+        {
+          // Actions
+          targets: 7,
+          title: "Actions",
+          orderable: false,
+          render: function (data, type, full, meta) {
+            return (
+              '<div class="d-flex flex-row">' +
+              '<form action="/receptionist/booking/' +
+              full["_id"] +
+              '?_method=DELETE" method="post" class="item-delete">' +
+              '<button class="btn btn-sm">' +
+              feather.icons["trash-2"].toSvg({ class: "font-small-4 mr-50" }) +
+              "</button>" +
+              "</form>" +
+              '<a href="/receptionist/booking/' +
+              full["_id"] +
+              '" class="item-edit">' +
+              feather.icons["edit"].toSvg({ class: "font-small-4" }) +
+              "</a>" +
+              "<div>"
+            );
+          },
+        },
+      ],
+      order: [[2, "desc"]],
+      dom: '<"card-header border-bottom p-1"<"head-label"><"dt-action-buttons text-right"B>><"d-flex justify-content-between align-items-center mx-0 row"<"col-sm-12 col-md-6"l><"col-sm-12 col-md-6"f>>t<"d-flex justify-content-between mx-0 row"<"col-sm-12 col-md-6"i><"col-sm-12 col-md-6"p>>',
+      displayLength: 7,
+      lengthMenu: [7, 10, 25, 50, 75, 100],
+      buttons: [
+        {
+          extend: "collection",
+          className: "btn btn-outline-secondary dropdown-toggle mr-2",
+          text:
+            feather.icons["share"].toSvg({ class: "font-small-4 mr-50" }) +
+            "Export",
+          buttons: [
+            {
+              extend: "print",
+              text:
+                feather.icons["printer"].toSvg({
+                  class: "font-small-4 mr-50",
+                }) + "Print",
+              className: "dropdown-item",
+              exportOptions: { columns: [3, 4, 5, 6, 7] },
+            },
+            {
+              extend: "csv",
+              text:
+                feather.icons["file-text"].toSvg({
+                  class: "font-small-4 mr-50",
+                }) + "Csv",
+              className: "dropdown-item",
+              exportOptions: { columns: [3, 4, 5, 6, 7] },
+            },
+            {
+              extend: "excel",
+              text:
+                feather.icons["file"].toSvg({ class: "font-small-4 mr-50" }) +
+                "Excel",
+              className: "dropdown-item",
+              exportOptions: { columns: [3, 4, 5, 6, 7] },
+            },
+            {
+              extend: "pdf",
+              text:
+                feather.icons["clipboard"].toSvg({
+                  class: "font-small-4 mr-50",
+                }) + "Pdf",
+              className: "dropdown-item",
+              exportOptions: { columns: [3, 4, 5, 6, 7] },
+            },
+            {
+              extend: "copy",
+              text:
+                feather.icons["copy"].toSvg({ class: "font-small-4 mr-50" }) +
+                "Copy",
+              className: "dropdown-item",
+              exportOptions: { columns: [3, 4, 5, 6, 7] },
+            },
+          ],
+          init: function (api, node, config) {
+            $(node).removeClass("btn-secondary");
+            $(node).parent().removeClass("btn-group");
+            setTimeout(function () {
+              $(node)
+                .closest(".dt-buttons")
+                .removeClass("btn-group")
+                .addClass("d-inline-flex");
+            }, 50);
+          },
+        },
+        {
+          text:
+            feather.icons["plus"].toSvg({ class: "mr-50 font-small-4" }) +
+            "Add New Record",
+          className: "create-new btn btn-primary",
+          attr: {
+            onclick: "location.href='/receptionist/booking/create';",
           },
           init: function (api, node, config) {
             $(node).removeClass("btn-secondary");

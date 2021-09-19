@@ -1,0 +1,120 @@
+<% layout('layouts/boilerplate') %>
+
+<!-- BEGIN: Content-->
+<div class="app-content content ">
+    <div class="content-overlay"></div>
+    <div class="header-navbar-shadow"></div>
+    <div class="content-wrapper">
+        <div class="content-header row">
+            <div class="content-header-left col-md-9 col-12 mb-2">
+                <div class="row breadcrumbs-top">
+                    <div class="col-12">
+                        <h2 class="content-header-title float-left mb-0">Add New Customers</h2>
+                        <div class="breadcrumb-wrapper">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="/admin/dashboard">Admin</a>
+                                </li>
+                                <li class="breadcrumb-item"><a href="/admin/customer">Customers</a>
+                                </li>
+                                <li class="breadcrumb-item active">Create
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content-body">
+            <!-- Basic Inputs start -->
+            <section id="basic-input">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Create New Customers</h4>
+                            </div>
+                            <div class="card-body">
+                                <form action="/receptionist/customer/" method="post">
+                                    <div class="row">
+                                        <div class="col-xl-6 col-md-6 col-12 mb-1">
+                                            <div class="form-group">
+                                                <label for="customer">Customer</label>
+                                                <select class="form-control" id="customer" name="booking[customer]">
+                                                    <% for(let customer of data['customers']){ %>
+                                                    <option value="<%= customer._id %>"><%= customer.fname %> </option>
+                                                    <%  } %>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6 col-md-6 col-12 mb-1">
+                                            <div class="form-group">
+                                                <label for="room">Room</label>
+                                                <select class="form-control" id="room" name="booking[room]">
+                                                    <% for(let room of data['rooms']){ %>
+                                                    <option value="<%= room._id %>"><%= room.number %> </option>
+                                                    <%  } %>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6 col-md-6 col-12 mb-1">
+                                            <div class="form-group">
+                                                <label for="check_in">Check In time</label>
+                                                <input type="datetime-local" class="form-control" id="check_in" required
+                                                    name="booking[check_in]" placeholder="Enter email" />
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6 col-md-6 col-12 mb-1">
+                                            <div class="form-group">
+                                                <label for="checkout">Checkout</label>
+                                                <input type="datetime-local" class="form-control" id="checkout" required
+                                                    name="booking[checkout]" placeholder="Enter Mobile" />
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6 col-md-6 col-12 mb-1">
+                                            <div class="form-group">
+                                                <label for="packages">Package</label>
+                                                <% for(let packages of data["packages"]){ %>
+                                                <div class="custom-control custom-radio">
+                                                    <input type="radio" class="custom-control-input"
+                                                        name="booking[packages]" id="<%= packages._id %>" />
+                                                    <label class="custom-control-label"
+                                                        for="<%= packages._id %>"><%= packages.name %> - <%= packages.amount %></label>
+                                                </div>
+                                                <%  } %>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6 col-md-6 col-12 mb-1">
+                                            <div class="form-group">
+                                                <!-- <div class="col-md-12"> -->
+                                                    <label for="ammenities">Ammenities</label>
+                                                    <!-- </div> -->
+                                                    <div class=" mx-1 row">
+                                                    <% for(let ammenities of data['ammenities']){ %>
+                                                    <div class="col-md-6 custom-control custom-checkbox">
+                                                        <input type="checkbox" class="custom-control-input"
+                                                            name="booking[ammenities]" id="<%= ammenities._id %>" />
+                                                        <label class="custom-control-label"
+                                                            for="<%= ammenities._id %>"><%= ammenities.name %> - <%= ammenities.price_per_unit %></label>
+                                                    </div>
+                                                    <%  } %>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-12 col-md-12 col-12 mb-1">
+                                            <div class="form-group">
+                                                <button class="btn btn-primary" type="submit">Submit for Payment</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Basic Inputs end -->
+        </div>
+
+    </div>
+</div>
+<!-- END: Content-->

@@ -2,7 +2,7 @@
 <div class="main-menu menu-fixed menu-light menu-accordion menu-shadow" data-scroll-to-active="true">
     <div class="navbar-header">
         <ul class="nav navbar-nav flex-row">
-            <li class="nav-item mr-auto"><a class="navbar-brand"   href="<%= (currentUser.role=="a")?"/admin/dashboard" : "/receptionist/dashboard" %>"><span class="brand-logo">
+            <li class="nav-item mr-auto"><a class="navbar-brand"   href="<%= (currentUser && currentUser.role=="a")?"/admin/dashboard" : "/receptionist/dashboard" %>"><span class="brand-logo">
                         <svg viewbox="0 0 139 95" version="1.1" xmlns="http://www.w3.org/2000/svg"
                             xmlns:xlink="http://www.w3.org/1999/xlink" height="24">
                             <defs>
@@ -50,14 +50,14 @@
     <div class="main-menu-content">
         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
             <li class="<%= (url.includes("/admin/dashboard"))?'active':'' %> nav-item"><a
-                    class="d-flex align-items-center" href="<%= (currentUser.role=="a")?"/admin/dashboard":"/receptionist/dashboard" %>"><i data-feather="home"></i><span
+                    class="d-flex align-items-center" href="<%= (currentUser && currentUser.role=="a")?"/admin/dashboard":((currentUser && currentUser.role=="r")?"/receptionist/dashboard":"/login") %>"><i data-feather="home"></i><span
                         class="menu-title text-truncate" data-i18n="Dashboards">Dashboard</span></a>
             </li>
 
             <li class=" navigation-header"><span data-i18n="Apps &amp; Pages">Apps &amp; Pages</span><i
                     data-feather="more-horizontal"></i>
             </li>
-            <% if(currentUser.role=="a"){ %> 
+            <% if(currentUser && currentUser.role=="a"){ %> 
             <li class="<%= (url.includes("/admin/user"))?'active':'' %> nav-item"><a class="d-flex align-items-center"
                     href="/admin/user"><i data-feather="user"></i><span class="menu-title text-truncate"
                         data-i18n="Users">Users</span></a>
@@ -87,14 +87,19 @@
                         class="menu-title text-truncate" data-i18n="Ammenity">Ammenity</span></a>
 
             </li>
-            <% }else if(currentUser.role=="r"){%> 
+            <% }else if(currentUser && currentUser.role=="r"){%> 
             <li class="<%= (url.includes("/receptionist/customer"))?'active':'' %> nav-item"><a
                     class="d-flex align-items-center " href="/receptionist/customer"><i data-feather="user"></i><span
                         class="menu-title text-truncate" data-i18n="Customer">Customer</span></a>
 
             </li>
+            <li class="<%= (url.includes("/receptionist/booking"))?'active':'' %> nav-item"><a
+                    class="d-flex align-items-center " href="/receptionist/booking"><i data-feather="user"></i><span
+                        class="menu-title text-truncate" data-i18n="Customer">Booking</span></a>
+
+            </li>
             <% } %> 
-            <% if(currentUser.role=="a"){ %> 
+            <% if(currentUser && currentUser.role=="a"){ %> 
 
             <li class=" navigation-header"><span data-i18n="Page Settings">Page Settings</span><i
                     data-feather="more-horizontal"></i>

@@ -25,6 +25,7 @@ const adminPackageRoutes = require("./routes/admin/package");
 const adminAmmenityRoutes = require("./routes/admin/ammenities");
 const adminFacilityRoutes = require("./routes/admin/facilities");
 const repUserRoutes = require("./routes/receptionist/customer");
+const repbookingRoutes = require("./routes/receptionist/booking");
 const helmet = require("helmet");
 
 const dbUrl = process.env.DB_URL;
@@ -175,6 +176,7 @@ app.use("/admin/package", adminPackageRoutes);
 app.use("/admin/ammenity", adminAmmenityRoutes);
 app.use("/admin/facility", adminFacilityRoutes);
 app.use("/receptionist/customer", repUserRoutes);
+app.use("/receptionist/booking", repbookingRoutes);
 
 app.all("*", (req, res, next) => {
   next(new ExpressError("Page Not Found", 404));

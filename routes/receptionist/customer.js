@@ -22,6 +22,6 @@ router
   .get(isLoggedIn, isReceptionist, customerController.edit)
   .put(isLoggedIn, isReceptionist, catchAsync(customerController.update))
   // .put(isLoggedIn, isReceptionist, validateCustomer, catchAsync(customerController.update))
-  .delete(isLoggedIn, isReceptionist, catchAsync(customerController.delete));
+  // .delete(isLoggedIn, isReceptionist, catchAsync(customerController.delete));
 
 module.exports = router;

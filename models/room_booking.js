@@ -24,7 +24,7 @@ const roomBookingSchema = new Schema(
       },
     ],
     check_in: Date,
-    check_checkout: Date,
+    checkout: Date,
     // image:[imageSchema],
     status: {
       type: String,
