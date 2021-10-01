@@ -34,27 +34,36 @@
                                 <h4 class="card-title">Create New Room</h4>
                             </div>
                             <div class="card-body">
-                                <form action="/admin/package/<%= package._id %>?_method=PUT" method="post">
+                                <form action="/admin/package/<%= package._id %>?_method=PUT" method="post"  novalidate class="validated-form">
                                     <div class="row">
                                         <div class="col-xl-4 col-md-6 col-12 mb-1">
                                             <div class="form-group">
                                                 <label for="name">Package Name</label>
-                                                <input type="text" class="form-control" id="name" value="<%= package.name  %>" name="package[name]" placeholder="Package Name" />
+                                                <input type="text" class="form-control" id="name" value="<%= package.name  %>" name="package[name]" required placeholder="Package Name" />
+                                                <div class="invalid-feedback">
+                                                    Check Again!
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col-xl-4 col-md-6 col-12 mb-1">
                                             <div class="form-group">
                                                 <label for="amount">Amount</label>
-                                                <input type="text" class="form-control" id="amount" value="<%= package.amount  %>" name="package[amount]" placeholder="Amount" />
+                                                <input type="text" class="form-control" id="amount" value="<%= package.amount  %>" name="package[amount]" required placeholder="Amount" />
+                                                <div class="invalid-feedback">
+                                                    Check Again!
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col-xl-4 col-md-6 col-12 mb-1">
                                             <div class="form-group">
                                                 <label for="type">Type</label>
-                                                <select class="form-control" id="type" value="<%= package.type  %>" name="package[type]">
+                                                <select class="form-control" required id="type" value="<%= package.type  %>" name="package[type]">
                                                     <option value="Seasonal">Seasonal</option>
                                                     <option value="Regular">Regular</option>
                                                 </select>
+                                                <div class="invalid-feedback">
+                                                    Check Again!
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-md-6 col-12 mb-1 m">

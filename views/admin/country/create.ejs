@@ -34,13 +34,16 @@
                                 <h4 class="card-title">Create New Country</h4>
                             </div>
                             <div class="card-body">
-                                <form action="/admin/customer/country" method="post">
+                                <form action="/admin/country" method="post" novalidate class="validated-form">
                                     <div class="row">
                                         <div class="col-xl-4 col-md-6 col-12 mb-1">
                                             <div class="form-group">
                                                 <label for="fname">Country Name</label>
                                                 <input type="text" class="form-control" id="fname" name="country[name]"
-                                                    placeholder="First Name" />
+                                                    required placeholder="Country Name" />
+                                                    <div class="invalid-feedback">
+                                                        Check Again!
+                                                    </div>
                                             </div>
                                         </div>
 
@@ -48,7 +51,10 @@
                                             <div class="form-group">
                                                 <label for="country">Code</label>
                                                 <input type="text" class="form-control" id="country"
-                                                    name="country[code]" placeholder="Country" />
+                                                    name="country[code]" required placeholder="Country" />
+                                                    <div class="invalid-feedback">
+                                                        Check Again!
+                                                    </div>
                                             </div>
                                         </div>
                                         <div class="col-xl-12 col-md-12 col-12 mb-1">

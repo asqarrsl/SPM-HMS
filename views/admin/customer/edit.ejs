@@ -34,14 +34,17 @@
                                 <h4 class="card-title">Create New Customers</h4>
                             </div>
                             <div class="card-body">
-                                <form action="/admin/customer/<%= customer._id %>?_method=PUT" method="post">
+                                <form action="/admin/customer/<%= customer._id %>?_method=PUT" method="post"  novalidate class="validated-form">
                                     <div class="row">
                                         <div class="col-xl-4 col-md-6 col-12 mb-1">
                                             <div class="form-group">
                                                 <label for="fname">First Name</label>
                                                 <input type="text" class="form-control" id="fname"
                                                     value="<%=customer.fname%>" name="customer[fname]"
-                                                    placeholder="First Name" />
+                                                    required placeholder="First Name" />
+                                                    <div class="invalid-feedback">
+                                                        Check Again!
+                                                    </div>
                                             </div>
                                         </div>
                                         <div class="col-xl-4 col-md-6 col-12 mb-1">
@@ -49,7 +52,10 @@
                                                 <label for="lname">Last Name</label>
                                                 <input type="text" class="form-control" id="lname"
                                                     value="<%=customer.lname%>" name="customer[lname]"
-                                                    placeholder="Last Name" />
+                                                    required placeholder="Last Name" />
+                                                    <div class="invalid-feedback">
+                                                        Check Again!
+                                                    </div>
                                             </div>
                                         </div>
                                         <div class="col-xl-4 col-md-6 col-12 mb-1">
@@ -57,7 +63,10 @@
                                                 <label for="email">Email</label>
                                                 <input type="text" class="form-control" id="email"
                                                     value="<%=customer.email%>" name="customer[email]"
-                                                    placeholder="Enter email" />
+                                                    required placeholder="Enter email" />
+                                                    <div class="invalid-feedback">
+                                                        Check Again!
+                                                    </div>
                                             </div>
                                         </div>
                                         <div class="col-xl-4 col-md-6 col-12 mb-1">
@@ -65,21 +74,30 @@
                                                 <label for="mobile">Mobile</label>
                                                 <input type="text" class="form-control" id="mobile"
                                                     value="<%=customer.mobile%>" name="customer[mobile]"
-                                                    placeholder="Enter Mobile" />
+                                                    required placeholder="Enter Mobile" />
+                                                    <div class="invalid-feedback">
+                                                        Check Again!
+                                                    </div>
                                             </div>
                                         </div>
                                         <div class="col-xl-4 col-md-6 col-12 mb-1">
                                             <div class="form-group">
                                                 <label for="nic">NIC</label>
                                                 <input type="text" class="form-control" id="nic"
-                                                    value="<%=customer.nic%>" name="customer[nic]" placeholder="NIC" />
+                                                    value="<%=customer.nic%>" name="customer[nic]" required placeholder="NIC" />
+                                                    <div class="invalid-feedback">
+                                                        Check Again!
+                                                    </div>
                                             </div>
                                         </div>
                                         <div class="col-xl-4 col-md-6 col-12 mb-1">
                                             <div class="form-group">
                                                 <label for="dob">DOB</label>
                                                 <input type="date" class="form-control" id="dob"
-                                                    value="<%=customer.dob%>" name="customer[dob]" placeholder="dob" />
+                                                value="<%= new Date(customer.dob).toLocaleString("sv-SE", { year: "numeric", month: "2-digit", day: "2-digit"}).replace(" ", "T") %>" name="customer[dob]" required placeholder="dob" />
+                                                    <div class="invalid-feedback">
+                                                        Check Again!
+                                                    </div>
                                             </div>
                                         </div>
                                         <div class="col-xl-4 col-md-6 col-12 mb-1">
@@ -87,7 +105,10 @@
                                                 <label for="address">Address</label>
                                                 <input type="text" class="form-control" id="address"
                                                     value="<%=customer.address%>" name="customer[address]"
-                                                    placeholder="Address" />
+                                                    required placeholder="Address" />
+                                                    <div class="invalid-feedback">
+                                                        Check Again!
+                                                    </div>
                                             </div>
                                         </div>
                                         <div class="col-xl-4 col-md-6 col-12 mb-1">
@@ -95,23 +116,37 @@
                                                 <label for="city">City</label>
                                                 <input type="text" class="form-control" id="city"
                                                     value="<%=customer.city%>" name="customer[city]"
-                                                    placeholder="City" />
+                                                    required placeholder="City" />
+                                                    <div class="invalid-feedback">
+                                                        Check Again!
+                                                    </div>
                                             </div>
                                         </div>
                                         <div class="col-xl-4 col-md-6 col-12 mb-1">
                                             <div class="form-group">
                                                 <label for="state">State</label>
-                                                <input type="text" class="form-control" id="state"
-                                                    value="<%=customer.state%>" name="customer[state]"
-                                                    placeholder="State" />
+                                                <select class="form-control" id="state" required name="customer[state]">
+                                                    <% for(let state of data['states']){ %>
+                                                    <option value="<%= state._id %>" <%= (customer.state.equals(state._id))?"selected" :""%>><%= state.name %> </option>
+                                                    <%  } %>
+                                                </select>
+                                                    <div class="invalid-feedback">
+                                                        Check Again!
+                                                    </div>
                                             </div>
                                         </div>
                                         <div class="col-xl-4 col-md-6 col-12 mb-1">
                                             <div class="form-group">
                                                 <label for="country">Country</label>
-                                                <input type="text" class="form-control" id="country"
-                                                    value="<%=customer.country%>" name="customer[country]"
-                                                    placeholder="Country" />
+                                                <select class="form-control" id="country" required
+                                                    name="customer[country]">
+                                                    <% for(let country of data['countries']){ %>
+                                                    <option value="<%= country._id %>" <%= (customer.country.equals(country._id))? "selected" :""%> ><%= country.name %> </option>
+                                                    <%  } %>
+                                                </select>
+                                                    <div class="invalid-feedback">
+                                                        Check Again!
+                                                    </div>
                                             </div>
                                         </div>
                                         <div class="col-xl-12 col-md-12 col-12 mb-1">

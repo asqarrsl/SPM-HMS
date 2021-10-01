@@ -12,9 +12,9 @@
                         <h2 class="content-header-title float-left mb-0">Add New Customers</h2>
                         <div class="breadcrumb-wrapper">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="/admin/dashboard">Admin</a>
+                                <li class="breadcrumb-item"><a href="/receptionist/dashboard">Receptionist</a>
                                 </li>
-                                <li class="breadcrumb-item"><a href="/admin/customer">Customers</a>
+                                <li class="breadcrumb-item"><a href="/receptionist/booking">Booking</a>
                                 </li>
                                 <li class="breadcrumb-item active">Create
                                 </li>
@@ -31,54 +31,66 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="card-title">Create New Customers</h4>
+                                <h4 class="card-title">Add New Booking</h4>
                             </div>
                             <div class="card-body">
-                                <form action="/receptionist/customer/" method="post">
+                                <form action="/receptionist/booking/" method="post" class="create-booking validated-form" novalidate >
                                     <div class="row">
                                         <div class="col-xl-6 col-md-6 col-12 mb-1">
                                             <div class="form-group">
                                                 <label for="customer">Customer</label>
-                                                <select class="form-control" id="customer" name="booking[customer]">
+                                                <select required class="form-control" id="customer" name="booking[customer]">
                                                     <% for(let customer of data['customers']){ %>
                                                     <option value="<%= customer._id %>"><%= customer.fname %> </option>
                                                     <%  } %>
                                                 </select>
+                                                <div class="invalid-feedback">
+                                                    Check Again!
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-md-6 col-12 mb-1">
                                             <div class="form-group">
                                                 <label for="room">Room</label>
-                                                <select class="form-control" id="room" name="booking[room]">
+                                                <select  required class="form-control" id="room" name="booking[room]">
                                                     <% for(let room of data['rooms']){ %>
                                                     <option value="<%= room._id %>"><%= room.number %> </option>
                                                     <%  } %>
                                                 </select>
+                                                <div class="invalid-feedback">
+                                                    Check Again!
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-md-6 col-12 mb-1">
                                             <div class="form-group">
                                                 <label for="check_in">Check In time</label>
                                                 <input type="datetime-local" class="form-control" id="check_in" required
-                                                    name="booking[check_in]" placeholder="Enter email" />
+                                                    name="booking[check_in]" required placeholder="Enter email" />
+                                                    <div class="invalid-feedback">
+                                                        Check Again!
+                                                    </div>
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-md-6 col-12 mb-1">
                                             <div class="form-group">
                                                 <label for="checkout">Checkout</label>
                                                 <input type="datetime-local" class="form-control" id="checkout" required
-                                                    name="booking[checkout]" placeholder="Enter Mobile" />
+                                                    name="booking[checkout]" required placeholder="Enter Mobile" />
+                                                    <div class="invalid-feedback">
+                                                        Check Again!
+                                                    </div>
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-md-6 col-12 mb-1">
                                             <div class="form-group">
-                                                <label for="packages">Package</label>
-                                                <% for(let packages of data["packages"]){ %>
+                                                <label for="package">Package</label>
+                                                <% for(let package of data["packages"]){ %>
                                                 <div class="custom-control custom-radio">
-                                                    <input type="radio" class="custom-control-input"
-                                                        name="booking[packages]" id="<%= packages._id %>" />
+                                                    <input type="radio" class="custom-control-input  customer-package"
+                                                        name="booking[package]" data-price="<%= package.amount %>" value="<%= package._id %>" id="<%= package._id %>" />
                                                     <label class="custom-control-label"
-                                                        for="<%= packages._id %>"><%= packages.name %> - <%= packages.amount %></label>
+                                                        for="<%= package._id %>"><%= package.name %> - <%= package.amount %></label>
                                                 </div>
                                                 <%  } %>
                                             </div>
@@ -91,13 +103,19 @@
                                                     <div class=" mx-1 row">
                                                     <% for(let ammenities of data['ammenities']){ %>
                                                     <div class="col-md-6 custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input"
-                                                            name="booking[ammenities]" id="<%= ammenities._id %>" />
+                                                        <input type="checkbox" class="custom-control-input customer-amminities"
+                                                            name="booking[ammenities][]" data-price="<%= ammenities.price_per_unit %>"  value="<%= ammenities._id %>" id="<%= ammenities._id %>" />
                                                         <label class="custom-control-label"
                                                             for="<%= ammenities._id %>"><%= ammenities.name %> - <%= ammenities.price_per_unit %></label>
                                                     </div>
                                                     <%  } %>
                                                 </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-12 col-md-12 col-12 mb-1">
+                                            <div class="form-group">
+                                                <input type="hidden" name="booking[total]" id="total_val">
+                                                <h3 id="booking-total" class="text-danger">Total : 0</h3>
                                             </div>
                                         </div>
                                         <div class="col-xl-12 col-md-12 col-12 mb-1">

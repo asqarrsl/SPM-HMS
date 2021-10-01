@@ -28,12 +28,17 @@ module.exports.store = async (req, res) => {
   res.redirect(`/admin/customer`);
 };
 module.exports.edit = async (req, res) => {
+  let data = [];
+  let state = await State.find({});
+  let country = await Country.find({});
+  data["states"] = state;
+  data["countries"] = country;
   const customer = await Customer.findById(req.params.id);
   if (!customer) {
     req.flash("error", "Couldn't find that Customer!");
     return res.redirect(`/admin/customer`);
   }
-  res.render("admin/customer/edit", { customer });
+  res.render("admin/customer/edit", { customer,data });
 };
 
 module.exports.update = async (req, res) => {

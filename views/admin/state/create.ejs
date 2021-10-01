@@ -34,24 +34,30 @@
                                 <h4 class="card-title">Create New State</h4>
                             </div>
                             <div class="card-body">
-                                <form action="/admin/customer/state" method="post">
+                                <form action="/admin/state" method="post"  novalidate class="validated-form">
                                     <div class="row">
                                         <div class="col-xl-4 col-md-6 col-12 mb-1">
                                             <div class="form-group">
                                                 <label for="fname">State Name</label>
                                                 <input type="text" class="form-control" id="fname" name="state[name]"
-                                                    placeholder="First Name" />
+                                                    required placeholder="First Name" />
+                                                    <div class="invalid-feedback">
+                                                        Check Again!
+                                                    </div>
                                             </div>
                                         </div>
 
                                         <div class="col-xl-4 col-md-6 col-12 mb-1">
                                             <div class="form-group">
                                                 <label for="country">Country</label>
-                                                <select class="form-control" id="country" name="state[country]">
+                                                <select required class="form-control" id="country" name="state[country]">
                                                     <% for(let countr of country){ %>
                                                     <option value="<%= countr._id %>"><%= countr.name %> </option>
                                                     <%  } %>
                                                 </select>
+                                                <div class="invalid-feedback">
+                                                    Check Again!
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col-xl-12 col-md-12 col-12 mb-1">

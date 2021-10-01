@@ -9,6 +9,8 @@ $(function () {
     dt_basic_table_customer = $(".datatables-basic-customer"),
     dt_basic_table_customer = $(".datatables-basic-customer"),
     dt_basic_table_customer_rep = $(".datatables-basic-customer-rep"),
+    dt_basic_table_room_avail = $(".datatables-basic-room-avail"),
+    
     dt_basic_table_booking = $(".datatables-basic-booking"),
     dt_basic_table_room = $(".datatables-basic-room"),
     dt_basic_table_ammenity = $(".datatables-basic-ammenity"),
@@ -20,9 +22,11 @@ $(function () {
     dt_multilingual_table = $(".dt-multilingual"),
     assetPath = "../../../app-assets/";
 
+  
   if ($("body").attr("data-framework") === "laravel") {
     assetPath = $("body").attr("data-asset-path");
   }
+
 
   // DataTable with buttons
   // --------------------------------------------------------------------
@@ -602,6 +606,94 @@ $(function () {
     });
     $("div.head-label").html('<h6 class="mb-0">Room Details</h6>');
   }
+  if (dt_basic_table_room_avail.length) {
+    var dt_basic = dt_basic_table_room_avail.DataTable({
+      ajax: "/receptionist/room/all",
+      columns: [
+        { data: "" },
+        { data: "number" },
+        { data: "type" },
+        { data: "charge" },
+        { data: "headcount" },
+        { data: "availability" },
+      ],
+      columnDefs: [
+        {
+          // For Checkboxes
+          targets: 0,
+          render: function (data, type, full, meta) {
+            return meta.row + 1;
+          },
+        },
+        {
+          // Label
+          targets: 5,
+          render: function (data, type, full, meta) {
+            var $status_number = full["availability"];
+            var $status = {
+              1: { title: "Available", class: "badge-light-success" },
+              0: { title: "Occupied", class: " badge-light-danger" },
+            };
+            if (typeof $status[$status_number] === "undefined") {
+              return data;
+            }
+            return (
+              '<span class="badge badge-pill ' +
+              $status[$status_number].class +
+              '">' +
+              $status[$status_number].title +
+              "</span>"
+            );
+          },
+        },
+      ],
+      order: [[5, "desc"]],
+      dom: '<"card-header"><"d-flex justify-content-between align-items-center mx-0 row"<"col-sm-12 col-md-6"l><"col-sm-12 col-md-6"f>>t<"d-flex justify-content-between mx-0 row"<"col-sm-12 col-md-6"i><"col-sm-12 col-md-6"p>>',
+      displayLength: 7,
+      lengthMenu: [7, 10, 25, 50, 75, 100],
+      responsive: {
+        details: {
+          display: $.fn.dataTable.Responsive.display.modal({
+            header: function (row) {
+              var data = row.data();
+              return "Details of " + data["fname"];
+            },
+          }),
+          type: "column",
+          renderer: function (api, rowIdx, columns) {
+            var data = $.map(columns, function (col, i) {
+              console.log(columns);
+              return col.title !== "" // ? Do not show row in modal popup if title is blank (for check box)
+                ? '<tr data-dt-row="' +
+                    col.rowIndex +
+                    '" data-dt-column="' +
+                    col.columnIndex +
+                    '">' +
+                    "<td>" +
+                    col.title +
+                    ":" +
+                    "</td> " +
+                    "<td>" +
+                    col.data +
+                    "</td>" +
+                    "</tr>"
+                : "";
+            }).join("");
+
+            return data ? $('<table class="table"/>').append(data) : false;
+          },
+        },
+      },
+      language: {
+        paginate: {
+          // remove previous & next text from pagination
+          previous: "&nbsp;",
+          next: "&nbsp;",
+        },
+      },
+    });
+    $("div.head-label").html('<h6 class="mb-0">Room Details</h6>');
+  }
   if (dt_basic_table_package.length) {
     var dt_basic = dt_basic_table_package.DataTable({
       ajax: "/admin/package/all",
@@ -621,6 +713,23 @@ $(function () {
           targets: 0,
           render: function (data, type, full, meta) {
             return meta.row + 1;
+          },
+        },
+        {
+          // For Checkboxes
+          targets: 4,
+          render: function (data, type, full, meta) {
+            // console.log(data);
+            return data.map(el=>el.name).join(',');
+          },
+        },
+        {
+          // For Checkboxes
+          targets: 5,
+          render: function (data, type, full, meta) {
+            // console.log(data.map(el=>el));
+            // return full;
+            return data.map(el=>el.name).join(',');
           },
         },
         {
@@ -994,11 +1103,12 @@ $(function () {
       columns: [
         { data: "" },
         { data: "customer" },
-        { data: "room" },
-        { data: "amenities" },
-        { data: "facilities" },
+        { data: "room.number" },
+        { data: "ammenities" },
+        { data: "package.name" },
         { data: "check_in" },
         { data: "checkout" },
+        { data: "availability" },
         { data: "" },
       ],
       columnDefs: [
@@ -1011,37 +1121,70 @@ $(function () {
         },
         {
           // For Checkboxes
+          targets: 1,
+          render: function (data, type, full, meta) {
+            return data.fname +" "+ data.lname;
+          },
+        },
+        {
+          // For Checkboxes
           targets: 3,
           render: function (data, type, full, meta) {
-            return data;
+            return data.length;
+          },
+        },
+        {
+          // Label
+          targets: 7,
+          render: function (data, type, full, meta) {
+            var $status_number = full["availability"];
+            var $status = {
+              1: { title: "Checked In", class: "badge-light-success" },
+              0: { title: "Checked Out", class: " badge-light-danger" },
+            };
+            if (typeof $status[$status_number] === "undefined") {
+              return data;
+            }
+            return (
+              '<span class="badge badge-pill ' +
+              $status[$status_number].class +
+              '">' +
+              $status[$status_number].title +
+              "</span>"
+            );
           },
         },
         {
           // Actions
-          targets: 7,
+          targets: 8,
           title: "Actions",
           orderable: false,
           render: function (data, type, full, meta) {
             return (
               '<div class="d-flex flex-row">' +
-              '<form action="/receptionist/booking/' +
-              full["_id"] +
-              '?_method=DELETE" method="post" class="item-delete">' +
-              '<button class="btn btn-sm">' +
-              feather.icons["trash-2"].toSvg({ class: "font-small-4 mr-50" }) +
-              "</button>" +
-              "</form>" +
               '<a href="/receptionist/booking/' +
               full["_id"] +
               '" class="item-edit">' +
               feather.icons["edit"].toSvg({ class: "font-small-4" }) +
               "</a>" +
+              '<a  target="_blank" href="/receptionist/booking/reciept/' +
+              full["_id"] +
+              '" class="item-edit mx-1">' +
+              feather.icons["file-text"].toSvg({ class: "font-small-4" }) +
+              "</a>" +
+              '<form action="/receptionist/booking/' +
+              full["_id"] +
+              '?_method=DELETE" method="post" class="item-delete">' +
+              '<button class="btn btn-sm">' +
+              feather.icons["delete"].toSvg({ class: "font-small-4 mr-50" }) +
+              "</button>" +
+              "</form>" +
               "<div>"
             );
           },
         },
       ],
-      order: [[2, "desc"]],
+      order: [[7, "asc"]],
       dom: '<"card-header border-bottom p-1"<"head-label"><"dt-action-buttons text-right"B>><"d-flex justify-content-between align-items-center mx-0 row"<"col-sm-12 col-md-6"l><"col-sm-12 col-md-6"f>>t<"d-flex justify-content-between mx-0 row"<"col-sm-12 col-md-6"i><"col-sm-12 col-md-6"p>>',
       displayLength: 7,
       lengthMenu: [7, 10, 25, 50, 75, 100],
@@ -1176,7 +1319,7 @@ $(function () {
         { data: "nic" },
         { data: "state.name" },
         { data: "country.name" },
-        { data: "status" },
+        { data: "availability" },
         { data: "" },
       ],
       columnDefs: [
@@ -1191,12 +1334,10 @@ $(function () {
           // Label
           targets: 8,
           render: function (data, type, full, meta) {
-            var $status_number = full["status"];
+            var $status_number = full["availability"];
             var $status = {
-              1: { title: "Active", class: "badge-light-success" },
-              2: { title: "Pending", class: " badge-light-primary" },
-              3: { title: "Rejected", class: " badge-light-warning" },
-              4: { title: "Deleted", class: " badge-light-danger" },
+              1: { title: "Checked In", class: "badge-light-success" },
+              0: { title: "Checked Out", class: " badge-light-danger" },
             };
             if (typeof $status[$status_number] === "undefined") {
               return data;
@@ -1228,7 +1369,7 @@ $(function () {
           },
         },
       ],
-      order: [[2, "desc"]],
+      order: [[8, "asc"]],
       dom: '<"card-header border-bottom p-1"<"head-label"><"dt-action-buttons text-right"B>><"d-flex justify-content-between align-items-center mx-0 row"<"col-sm-12 col-md-6"l><"col-sm-12 col-md-6"f>>t<"d-flex justify-content-between mx-0 row"<"col-sm-12 col-md-6"i><"col-sm-12 col-md-6"p>>',
       displayLength: 7,
       lengthMenu: [7, 10, 25, 50, 75, 100],
@@ -1917,4 +2058,5 @@ $(function () {
       },
     });
   }
+
 });

@@ -11,6 +11,8 @@ const methodOverride = require("method-override");
 const ejsMate = require("ejs-mate");
 const ExpressError = require("./utils/ExpressError");
 const passport = require("passport");
+let pdf = require("html-pdf");
+let ejs = require("ejs");
 const localStratergy = require("passport-local");
 const User = require("./models/user");
 const mongoSanitize = require("express-mongo-sanitize");
@@ -26,6 +28,7 @@ const adminAmmenityRoutes = require("./routes/admin/ammenities");
 const adminFacilityRoutes = require("./routes/admin/facilities");
 const repUserRoutes = require("./routes/receptionist/customer");
 const repbookingRoutes = require("./routes/receptionist/booking");
+const roomRoutes = require("./routes/receptionist/room");
 const helmet = require("helmet");
 
 const dbUrl = process.env.DB_URL;
@@ -103,6 +106,7 @@ const styleSrcUrls = [
   "https://fonts.googleapis.com/",
   "https://use.fontawesome.com/",
   "https://cdn.jsdelivr.net/",
+  "https://cdnjs.cloudflare.com/",
 ];
 const connectSrcUrls = [
   "https://api.mapbox.com/",
@@ -110,13 +114,15 @@ const connectSrcUrls = [
   "https://b.tiles.mapbox.com/",
   "https://events.mapbox.com/",
 ];
-const fontSrcUrls = [];
+const fontSrcUrls = [
+  "https://fonts.gstatic.com/"
+];
 app.use(
   helmet.contentSecurityPolicy({
     directives: {
       defaultSrc: [],
       connectSrc: ["'self'", ...connectSrcUrls],
-      scriptSrc: ["'unsafe-inline'", "'self'", ...scriptSrcUrls],
+      scriptSrc: ["'unsafe-inline'", "'self'","'unsafe-eval'", ...scriptSrcUrls],
       styleSrc: ["'self'", "'unsafe-inline'", ...styleSrcUrls],
       workerSrc: ["'self'", "blob:"],
       objectSrc: [],
@@ -146,26 +152,11 @@ app.use((req, res, next) => {
   next();
 });
 
+
+
 app.get("/", (req, res) => {
-  res.render("admin/dashboard/dashboard");
+  res.render("home");
 });
-
-app.get("/admin/dashboard", (req, res) => {
-  res.render("admin/dashboard/dashboard");
-});
-app.get("/receptionist/index", (req, res) => {
-  res.render("admin/dashboard/dashboard");
-});
-app.get("/receptionist/dashboard", (req, res) => {
-  res.render("admin/dashboard/dashboard");
-});
-
-// app.get("/fakeuser", async (req, res) => {
-//   const user = new User({ email: "asqarrsl@gmail.com", username: "ashique" });
-//   const newUser = await User.register(user, "asqarrsl");
-//   res.send(newUser);
-// });
-
 app.use("/", userRoutes);
 app.use("/admin/user", adminUserRoutes);
 app.use("/admin/customer", adminCustomerRoutes);
@@ -177,15 +168,27 @@ app.use("/admin/ammenity", adminAmmenityRoutes);
 app.use("/admin/facility", adminFacilityRoutes);
 app.use("/receptionist/customer", repUserRoutes);
 app.use("/receptionist/booking", repbookingRoutes);
+app.use("/receptionist/room", roomRoutes);
+
+
+
 
 app.all("*", (req, res, next) => {
   next(new ExpressError("Page Not Found", 404));
 });
+
 app.use((err, req, res, next) => {
   const { statusCode = 500 } = err;
   if (!err.message) err.message = "Something Went Wrong";
-  res.status(statusCode).render("error", { err });
+  res.locals.error = err;
+  // res.redirect('back')
+  // next();
+  if(statusCode == 404){
+    res.status(statusCode).render("error/404", { err });
+  }
+  res.status(statusCode).render("error/error", { err });
 });
+
 app.listen(3000, () => {
   console.log("Serving on port 3000!");
 });

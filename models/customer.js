@@ -23,6 +23,10 @@ const customerSchema = new Schema(
       type: String,
       default: 1,
     },
+    availability: {
+      type: String,
+      default: 1,
+    },
   },
   {
     timestamps: true,

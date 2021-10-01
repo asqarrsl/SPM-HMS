@@ -17,6 +17,10 @@ const roomSchema = new Schema(
     headcount: String,
     image: String,
     // image:[imageSchema],
+    availability: {
+      type: String,
+      default: 1,
+    },
     status: {
       type: String,
       default: 1,

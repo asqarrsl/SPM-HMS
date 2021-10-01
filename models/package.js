@@ -5,14 +5,14 @@ const packageSchema = new Schema(
   {
     name: String,
     amount: String,
-    facilities: {
+    facilities: [{
       type: Schema.Types.ObjectId,
       ref: "Facility",
-    },
-    ammenities: {
+    }],
+    ammenities: [{
       type: Schema.Types.ObjectId,
       ref: "Amenities",
-    },
+    }],
     type: String,
     availability: {
       type: String,

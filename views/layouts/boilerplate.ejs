@@ -54,8 +54,15 @@
     <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
     <!-- END: Custom CSS-->
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css"
+        integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-
+<style>
+   .toast-message{
+       color: #fff;
+   }
+</style>
 
 </head>
 <!-- END: Head-->
@@ -70,7 +77,6 @@
     <!-- <div class="pt-5">
 <div class="pt-5"> -->
 
-    <%- include('../partials/flash') %>
     <%- body %>
     <!-- </div>
 </div> -->
@@ -121,8 +127,31 @@
     <script src="/app-assets/vendors/js/pickers/flatpickr/flatpickr.min.js"></script>
     <!-- END: Page Vendor JS-->
 
+    <script src="/js/custom_script.js"></script>
     <script src="/js/data-table.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.min.js"></script>
+    <script src="/js/validateForms.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
+        integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- <script src="/app-assets/js/scripts/tables/table-datatables-basic.js"></script> -->
+
+
+    <% if(success && success.length){ %>
+
+    <script>
+        toastr.success("<%= success %>")
+    </script>
+
+    <% }  %>
+    <% if(error && error.length){ %>
+    <script>
+        toastr.error("<%= error %>")
+    </script>
+    <% }  %>
+
+
+
     <script>
         $(window).on('load', function () {
             if (feather) {
