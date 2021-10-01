@@ -24,7 +24,6 @@ $(function () {
   // DataTable with buttons
   // --------------------------------------------------------------------
 
-
   if (dt_basic_table_facility.length) {
     var dt_basic = dt_basic_table_facility.DataTable({
       ajax: "/admin/facility/all",
@@ -621,6 +620,32 @@ $(function () {
           },
         },
         {
+          // For Checkboxes
+          targets: 4,
+          render: function (data, type, full, meta) {
+            // var names = [];
+            // if(data){
+            //   for(let n of data){
+            //     names.push(n.name);
+            //   }
+            // }
+            return data.length;
+          },
+        },
+        {
+          // For Checkboxes
+          targets: 5,
+          render: function (data, type, full, meta) {
+            // var names = [];
+            // if(data){
+            //   // for(let n of data){
+            //   //   names.push(n.name);
+            //   // }
+            // }
+            return data.length;
+          },
+        },
+        {
           // Label
           targets: 6,
           render: function (data, type, full, meta) {
@@ -1175,8 +1200,6 @@ $(function () {
     });
     $("div.head-label").html('<h6 class="mb-0">User Details</h6>');
   }
-
-  
 
   // Flat Date picker
   if (dt_date_table.length) {

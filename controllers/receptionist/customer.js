@@ -54,13 +54,3 @@ module.exports.update = async (req, res) => {
   req.flash("success", "Successfully Updated the Customer!");
   res.redirect(`/receptionist/customer/`);
 };
-
-// module.exports.delete = async (req, res) => {
-//   const { id } = req.params;
-//   const customer = await Customer.findById(id);
-//   customer.status = 4;
-//   await customer.save();
-
-//   req.flash("success", "Successfully Deleted a Customer!");
-//   res.redirect(`/admin/customer`);
-// };

@@ -4,9 +4,6 @@ const Package = require("../../models/package");
 const Payment = require("../../models/payment");
 const Room = require("../../models/room");
 const Amenities = require("../../models/amenities");
-let pdf = require("html-pdf");
-let ejs = require("ejs");
-const path = require("path");
 
 module.exports.index = (req, res) => {
   res.render("receptionist/booking/index");
@@ -129,15 +126,7 @@ module.exports.checkout = async (req, res) => {
   room.availability = 1;
 
   await room.save();
-
-  // req.flash("success", "Successfully Checked out!");
-  // res.download(`views/receptionist/booking/reciept.ejs`);
   res.redirect(`/receptionist/booking`);
-  // res.redirect(`/receptionist/booking/reciept`,{booking});
-
-
-
-
 };
 
 module.exports.reciept = async (req, res) => {
@@ -159,46 +148,5 @@ module.exports.reciept = async (req, res) => {
     ;
 
     const payment = await Payment.find({booking_id:id})
-  // let packages = await Package.find({ status: 1 });
-  // let customers = await Customer.find({ status: 1 });
-  // let rooms = await Room.find({ status: 1, availability: 1 });
-  // let ammenities = await Amenities.find({ status: 1 });
-  // data["packages"] = packages;
-  // data["ammenities"] = ammenities;
-  // data["customers"] = customers;
-  // data["rooms"] = rooms;
-
   res.render("receptionist/booking/reciept",{booking,payment});
-
-
-// app.get("/generateReport", (req, res) => {
-	// ejs.renderFile(path.join(__dirname, '../../views/', "receptionist/booking/reciept.ejs"), {
-  //       // students: students
-  //       he : "hi"
-  //   }, (err, data) => {
-      
-  //       if (err) {
-          
-  //           res.send(err);
-  //       } else {
-  //           let options = {
-  //               "height": "11.25in",
-  //               "width": "8.5in",
-  //               "header": {
-  //                   "height": "20mm",
-  //               },
-  //               "footer": {
-  //                   "height": "20mm",
-  //               },
-
-  //           };
-  //           pdf.create(data, options).toFile("report.pdf", function (err, data) {
-  //               if (err) {
-  //                   res.send(err);
-  //               } else {
-  //                   res.send("File created successfully");
-  //               }
-  //           });
-  //       }
-  //   });
 };

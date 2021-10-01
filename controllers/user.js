@@ -19,21 +19,6 @@ module.exports.update = async (req, res) => {
   res.redirect(`/profile`);
 };
 
-module.exports.register = async (req, res) => {
-  try {
-    const { email, username, password } = req.body;
-    const newUser = new User({ email, username });
-    const registeredUser = await User.register(newUser, password);
-    req.login(registeredUser, (err) => {
-      if (err) return next(err);
-      req.flash("success", "Welcome to SPM HMS!");
-      res.redirect("/admin/index");
-    });
-  } catch (e) {
-    req.flash("error", e.message);
-    res.redirect("/register");
-  }
-};
 
 module.exports.renderLogin = (req, res) => {
   res.render("user/login");
