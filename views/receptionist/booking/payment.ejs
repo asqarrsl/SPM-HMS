@@ -1,0 +1,85 @@
+<% layout('layouts/boilerplate') %>
+
+<!-- BEGIN: Content-->
+<div class="app-content content ">
+    <div class="content-overlay"></div>
+    <div class="header-navbar-shadow"></div>
+    <div class="content-wrapper">
+        <div class="content-header row">
+        </div>
+        <div class="content-body">
+            <div class="auth-wrapper auth-v1">
+                <div class="auth-inner py-2">
+                    <!-- Register v1 -->
+                    <div class="card mb-0">
+                        <div class="card-body">
+                            <h4 class="card-title mb-1">Payment : <span class="text-danger"><%= data %></span> </h4>
+                            <!-- <p class="card-text mb-2">Make your app management easy and fun!</p> -->
+
+                            <form class="auth-register-form mt-2 row validated-form" action="/receptionist/booking/payment" method="POST" novalidate>
+                                <div class="col-12">
+
+                                    <div class="form-group">
+                                        <label for="name" class="form-label">Name on Card</label>
+                                        <input type="text" class="form-control" id="name"
+                                            name="payment[name]" required placeholder="John Doe" tabindex="1" autofocus />
+                                            <div class="invalid-feedback">
+                                                Check Again!
+                                            </div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label for="payment[card_no]" class="form-label">Credit card number</label>
+                                        <input type="number" class="form-control" id="payment[card_no]"
+                                            name="payment[card_no]" required placeholder="7878 7878 7878 7878" tabindex="1" autofocus />
+                                            <div class="invalid-feedback">
+                                                Check Again!
+                                            </div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+
+                                    <div class="form-group">
+                                        <label for="payment[expire]" class="form-label">Expire Date</label>
+                                        <input type="text" class="form-control" id="payment[expire]"
+                                            name="payment[expire]" required placeholder="12/25" tabindex="1" autofocus />
+                                            <div class="invalid-feedback">
+                                                Check Again!
+                                            </div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="payment[cvc]" class="form-label">CCV</label>
+                                        <input type="number" class="form-control" id="payment[cvc]"
+                                        name="payment[cvc]" required placeholder="234" tabindex="1" autofocus />
+                                        <div class="invalid-feedback">
+                                            Check Again!
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class=" align-self-end mr-2">
+                                <div class="form-group">
+                                    <button class="btn btn-primary" type="submit" tabindex="5">Checkout</button>
+                                </div>
+                            </div>
+                            </form>
+
+                            <p class="text-center mt-2">
+                                <span>Cancel Booking?</span>
+                                <a href="/receptionist/booking/">
+                                    <span>Add New Booking</span>
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                    <!-- /Register v1 -->
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- END: Content-->
