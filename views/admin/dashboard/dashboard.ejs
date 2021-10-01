@@ -11,7 +11,7 @@
             <!-- Dashboard Analytics Start -->
             <section id="dashboard-analytics">
                 <div class="row match-height">
-                    
+
                     <!-- Orders Chart Card starts -->
                     <div class="col-lg-3 col-sm-6 col-12">
                         <div class="card">
@@ -80,7 +80,7 @@
                     </div>
                     <!-- Orders Chart Card ends -->
 
-                    
+
                 </div>
 
                 <div class="row match-height">
@@ -91,7 +91,9 @@
                             <div class="card-header d-flex justify-content-between pb-0">
                                 <h4 class="card-title">Customers</h4>
                                 <div class="dropdown chart-dropdown">
-                                    <button class="btn btn-sm border-0 dropdown-toggle p-50" type="button" id="dropdownItem4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <button class="btn btn-sm border-0 dropdown-toggle p-50" type="button"
+                                        id="dropdownItem4" data-toggle="dropdown" aria-haspopup="true"
+                                        aria-expanded="false">
                                         <!-- Last 7 Days -->
                                     </button>
                                     <!-- <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownItem4">
@@ -104,7 +106,8 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-sm-2 col-12 d-flex flex-column flex-wrap text-center">
-                                        <h1 class="font-large-2 font-weight-bolder mt-2 mb-0"><%= data['total_booking'].length  %> </h1>
+                                        <h1 class="font-large-2 font-weight-bolder mt-2 mb-0">
+                                            <%= data['total_booking'].length  %> </h1>
                                         <p class="card-text">Bookings</p>
                                     </div>
                                     <div class="col-sm-10 col-12 d-flex justify-content-center">
@@ -114,23 +117,29 @@
                                 <div class="d-flex justify-content-between mt-1">
                                     <div class="text-center">
                                         <p class="card-text mb-50">Bookings This Month</p>
-                                        <span class="font-large-1 font-weight-bold"><%=  data['thismonth_booking'].length %></span>
+                                        <span
+                                            class="font-large-1 font-weight-bold"><%=  data['thismonth_booking'].length %></span>
                                     </div>
                                     <div class="text-center">
                                         <p class="card-text mb-50">Booking Checked In This Month</p>
-                                        <span class="font-large-1 font-weight-bold"><%=  data['thismonth_booking_current'].length %> </span>
+                                        <span
+                                            class="font-large-1 font-weight-bold"><%=  data['thismonth_booking_current'].length %>
+                                        </span>
                                     </div>
                                     <div class="text-center">
                                         <p class="card-text mb-50">Checked Out Booking This Month</p>
-                                        <span class="font-large-1 font-weight-bold"><%=  data['thismonth_out_booking'].length %></span>
+                                        <span
+                                            class="font-large-1 font-weight-bold"><%=  data['thismonth_out_booking'].length %></span>
                                     </div>
                                     <div class="text-center">
                                         <p class="card-text mb-50">Bookingd Checked In</p>
-                                        <span class="font-large-1 font-weight-bold"><%=  data['booking'].length %> </span>
+                                        <span class="font-large-1 font-weight-bold"><%=  data['booking'].length %>
+                                        </span>
                                     </div>
                                     <div class="text-center">
                                         <p class="card-text mb-50">Checked Out Booking</p>
-                                        <span class="font-large-1 font-weight-bold"><%=  data['out_booking'].length %></span>
+                                        <span
+                                            class="font-large-1 font-weight-bold"><%=  data['out_booking'].length %></span>
                                     </div>
                                 </div>
                             </div>

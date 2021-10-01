@@ -9,6 +9,6 @@ const { isLoggedIn, isAdmin, validateState } = require("../../middleware");
 router
   .route("/")
   .get(isLoggedIn, isAdmin, stateController.create)
-  .post(isLoggedIn, isAdmin,validateState, catchAsync(stateController.store));
+  .post(isLoggedIn, isAdmin, validateState, catchAsync(stateController.store));
 
 module.exports = router;

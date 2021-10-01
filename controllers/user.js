@@ -19,7 +19,6 @@ module.exports.update = async (req, res) => {
   res.redirect(`/profile`);
 };
 
-
 module.exports.renderLogin = (req, res) => {
   res.render("user/login");
 };
@@ -34,8 +33,8 @@ module.exports.login = (req, res) => {
   } else if (req.user.role == "r") {
     console.log("s" + req.user.role);
     redirectUrl = "/receptionist/dashboard";
-  } 
-  
+  }
+
   delete req.session.returnTo;
   res.redirect(redirectUrl);
 };

@@ -1,24 +1,25 @@
-const BaseJoi = require('joi');
-const sanitizeHTML = require('sanitize-html')
+const BaseJoi = require("joi");
+const sanitizeHTML = require("sanitize-html");
 const extension = (joi) => ({
-    type:'string',
-    base:joi.string(),
-    messages:{
-        'string.escapeHTML' : '{{#label}} must not include HTML'
+  type: "string",
+  base: joi.string(),
+  messages: {
+    "string.escapeHTML": "{{#label}} must not include HTML",
+  },
+  rules: {
+    escapeHTML: {
+      validate(value, helpers) {
+        const clean = sanitizeHTML(value, {
+          allowedTags: [],
+          allowedAttributes: {},
+        });
+        if (clean !== value)
+          return helpers.error("string.escapeHTML", { value });
+        return clean;
+      },
     },
-    rules:{
-        escapeHTML:{
-            validate(value,helpers){
-                const clean = sanitizeHTML(value,{
-                    allowedTags:[],
-                    allowedAttributes:{},
-                });
-                if (clean !==value) return helpers.error('string.escapeHTML',{value});
-                return clean;
-            }
-        }
-    }
-})
+  },
+});
 const Joi = BaseJoi.extend(extension);
 module.exports.campgroundSchema = Joi.object({
   campground: Joi.object({
@@ -97,7 +98,7 @@ module.exports.paymentSchema = Joi.object({
 });
 
 module.exports.bookingSchema = Joi.object({
-  booking: Joi.object({    
+  booking: Joi.object({
     room: Joi.required(),
     customer: Joi.required(),
     ammenities: Joi.required(),
@@ -108,29 +109,28 @@ module.exports.bookingSchema = Joi.object({
   }).required(),
 });
 module.exports.roomSchema = Joi.object({
-  room: Joi.object({    
-    number:Joi.required(),
-    type:Joi.required(),
-    charge:Joi.required(),
-    headcount:Joi.required(),
+  room: Joi.object({
+    number: Joi.required(),
+    type: Joi.required(),
+    charge: Joi.required(),
+    headcount: Joi.required(),
   }).required(),
 });
 
 module.exports.stateSchema = Joi.object({
-  state: Joi.object({    
+  state: Joi.object({
     name: Joi.required(),
     country: Joi.required(),
   }).required(),
 });
 
 module.exports.userSchema = Joi.object({
-  user: Joi.object({    
-    email:Joi.required(),
-    username:Joi.required(),
+  user: Joi.object({
+    email: Joi.required(),
+    username: Joi.required(),
     fname: Joi.required(),
     password: Joi.required(),
     lname: Joi.required(),
     role: Joi.required(),
   }).required(),
 });
-

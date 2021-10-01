@@ -16,7 +16,9 @@ module.exports.create = async (req, res) => {
 };
 
 module.exports.alldata = async (req, res) => {
-  var data = await Customer.find({status:1}).populate('state').populate('country');
+  var data = await Customer.find({ status: 1 })
+    .populate("state")
+    .populate("country");
   res.send({ data });
 };
 
@@ -38,7 +40,7 @@ module.exports.edit = async (req, res) => {
     req.flash("error", "Couldn't find that Customer!");
     return res.redirect(`/admin/customer`);
   }
-  res.render("admin/customer/edit", { customer,data });
+  res.render("admin/customer/edit", { customer, data });
 };
 
 module.exports.update = async (req, res) => {

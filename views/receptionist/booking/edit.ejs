@@ -34,7 +34,8 @@
                                 <h4 class="card-title">Edit Booking</h4>
                             </div>
                             <div class="card-body">
-                                <form action="/receptionist/booking/<%= booking._id %>?_method=PUT" method="post" class="edit-booking validated-form" novalidate>
+                                <form action="/receptionist/booking/<%= booking._id %>?_method=PUT" method="post"
+                                    class="edit-booking validated-form" novalidate>
                                     <div class="row">
                                         <div class="col-xl-6 col-md-6 col-12 mb-1">
                                             <div class="form-group">
@@ -73,7 +74,8 @@
                                                 <% for(let package of data["packages"]){ %>
                                                 <div class="custom-control custom-radio">
                                                     <input type="radio" class="custom-control-input  customer-package"
-                                                        name="booking[package]"  data-prices="<%= package.amount %>" data-price="<%= (booking.package.equals(package._id))? 0 :  package.amount%>"
+                                                        name="booking[package]" data-prices="<%= package.amount %>"
+                                                        data-price="<%= (booking.package.equals(package._id))? 0 :  package.amount%>"
                                                         value="<%= package._id %>" id="<%= package._id %>"
                                                         <%=  (booking.package.equals(package._id))?'checked':'' %> />
                                                     <label class="custom-control-label"
@@ -95,9 +97,8 @@
                                                             class="custom-control-input customer-amminities"
                                                             name="booking[ammenities][]"
                                                             data-price="<%= (booking.ammenities.includes(ammenities._id)) ? 0 :  ammenities.price_per_unit %>"
-                                                            value="<%= ammenities._id %>" id="<%= ammenities._id %>"                                                            
-                                                            <%=  (booking.ammenities.includes(ammenities._id)) ? 'checked' : '' %>
-                                                             />
+                                                            value="<%= ammenities._id %>" id="<%= ammenities._id %>"
+                                                            <%=  (booking.ammenities.includes(ammenities._id)) ? 'checked' : '' %> />
                                                         <label class="custom-control-label"
                                                             for="<%= ammenities._id %>"><%= ammenities.name %> -
                                                             <%= ammenities.price_per_unit %></label>
@@ -109,12 +110,14 @@
                                         <div class="col-xl-12 col-md-12 col-12 mb-1">
                                             <div class="form-group">
                                                 <input type="hidden" name="booking[sub_total]" id="total_val">
-                                                <h3 id="booking-total" class="text-danger">Total : <%= booking.total %></h3>
+                                                <h3 id="booking-total" class="text-danger">Total : <%= booking.total %>
+                                                </h3>
                                             </div>
                                         </div>
                                         <div class="col-xl-12 col-md-12 col-12 mb-1">
                                             <div class="form-group">
-                                                <button class="btn btn-primary" type="submit">Submit for Payment</button>
+                                                <button class="btn btn-primary" type="submit">Submit for
+                                                    Payment</button>
                                             </div>
                                         </div>
                                     </div>

@@ -50,15 +50,14 @@ module.exports.pay = async (req, res) => {
   const booking = new Booking(req.session.booking);
 
   await booking.save();
-  
+
   const payment = new Payment(req.body.payment);
   payment["amount"] = booking["total"];
   payment["booking_id"] = booking._id;
-  
-  
+
   await payment.save();
 
-  let customer_id = booking.customer
+  let customer_id = booking.customer;
   const customers = await Customer.findById(customer_id);
   customers.availability = 1;
 
@@ -100,7 +99,9 @@ module.exports.update = async (req, res) => {
   const { id } = req.params;
   let bookingcheck = await Booking.findById(id);
   let bookings = req.body.booking;
-  bookings.total = ((bookingcheck.total > 0) ? parseFloat(bookingcheck.total) : 0) + ((bookings.sub_total > 0)? parseFloat(bookings.sub_total):0)
+  bookings.total =
+    (bookingcheck.total > 0 ? parseFloat(bookingcheck.total) : 0) +
+    (bookings.sub_total > 0 ? parseFloat(bookings.sub_total) : 0);
   const booking = await Booking.findByIdAndUpdate(id, {
     ...bookings,
   });
@@ -112,7 +113,6 @@ module.exports.checkout = async (req, res) => {
   const booking = await Booking.findById(id);
   booking.availability = 0;
   await booking.save();
-
 
   let customer_id = booking.customer;
   let room_id = booking.room;
@@ -133,20 +133,17 @@ module.exports.reciept = async (req, res) => {
   const { id } = req.params;
   const booking = await Booking.findById(id)
     .populate({
-      path: 'customer',
-      populate:{
-        path:'country'
+      path: "customer",
+      populate: {
+        path: "country",
       },
-      populate:{
-        path:'state'
+      populate: {
+        path: "state",
       },
-    }
-    )
+    })
     .populate("room")
     .populate("package")
-    .populate("ammenities")
-    ;
-
-    const payment = await Payment.find({booking_id:id})
-  res.render("receptionist/booking/reciept",{booking,payment});
+    .populate("ammenities");
+  const payment = await Payment.find({ booking_id: id });
+  res.render("receptionist/booking/reciept", { booking, payment });
 };

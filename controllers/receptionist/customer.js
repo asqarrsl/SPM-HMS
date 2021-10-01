@@ -16,7 +16,9 @@ module.exports.create = async (req, res) => {
 };
 
 module.exports.alldata = async (req, res) => {
-  var data = await Customer.find({status:1}).populate('state').populate('country');
+  var data = await Customer.find({ status: 1 })
+    .populate("state")
+    .populate("country");
   console.log(data);
   res.send({ data });
 };
@@ -24,7 +26,7 @@ module.exports.alldata = async (req, res) => {
 module.exports.store = async (req, res) => {
   const customer = new Customer(req.body.customer);
   await customer.save();
-  
+
   req.flash("success", "Successfully made a Customer!");
   res.redirect(`/receptionist/booking/create`);
   // res.redirect(`/receptionist/customer`);
@@ -41,7 +43,7 @@ module.exports.edit = async (req, res) => {
     req.flash("error", "Couldn't find that Customer!");
     return res.redirect(`/admin/customer`);
   }
-  res.render("receptionist/customer/edit", { customer,data });
+  res.render("receptionist/customer/edit", { customer, data });
 };
 
 module.exports.update = async (req, res) => {

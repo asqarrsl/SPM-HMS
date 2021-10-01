@@ -34,35 +34,36 @@
                                 <h4 class="card-title">Edit User</h4>
                             </div>
                             <div class="card-body">
-                                <form action="/admin/user/<%= user._id %>?_method=PUT" method="post"  novalidate class="validated-form">
+                                <form action="/admin/user/<%= user._id %>?_method=PUT" method="post" novalidate
+                                    class="validated-form">
                                     <div class="row">
                                         <div class="col-xl-4 col-md-6 col-12 mb-1">
                                             <div class="form-group">
                                                 <label for="fname">First Name</label>
                                                 <input type="text" class="form-control" id="fname"
-                                                    value="<%=user.fname%>" name="user[fname]"
-                                                    required placeholder="First Name" />
-                                                    <div class="invalid-feedback">
-                                                        Check Again!
-                                                    </div>
+                                                    value="<%=user.fname%>" name="user[fname]" required
+                                                    placeholder="First Name" />
+                                                <div class="invalid-feedback">
+                                                    Check Again!
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col-xl-4 col-md-6 col-12 mb-1">
                                             <div class="form-group">
                                                 <label for="lname">Last Name</label>
                                                 <input type="text" class="form-control" id="lname"
-                                                    value="<%=user.lname%>" name="user[lname]"
-                                                    required placeholder="Last Name" />
-                                                    <div class="invalid-feedback">
-                                                        Check Again!
-                                                    </div>
+                                                    value="<%=user.lname%>" name="user[lname]" required
+                                                    placeholder="Last Name" />
+                                                <div class="invalid-feedback">
+                                                    Check Again!
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col-xl-4 col-md-6 col-12 mb-1">
                                             <div class="form-group">
                                                 <label for="role">Role</label>
-                                                <select required class="form-control" value="<%=user.role%>" name="user[role]"
-                                                    id="role">
+                                                <select required class="form-control" value="<%=user.role%>"
+                                                    name="user[role]" id="role">
                                                     <option value="a">Admin</option>
                                                     <option value="r">Receptionist</option>
                                                 </select>
@@ -75,22 +76,22 @@
                                             <div class="form-group">
                                                 <label for="email">Email</label>
                                                 <input type="text" class="form-control" id="email"
-                                                    value="<%=user.email%>" name="user[email]"
-                                                    required placeholder="Enter email" />
-                                                    <div class="invalid-feedback">
-                                                        Check Again!
-                                                    </div>
+                                                    value="<%=user.email%>" name="user[email]" required
+                                                    placeholder="Enter email" />
+                                                <div class="invalid-feedback">
+                                                    Check Again!
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col-xl-4 col-md-6 col-12 mb-1">
                                             <div class="form-group">
                                                 <label for="username">Username</label>
                                                 <input type="text" class="form-control" id="username"
-                                                    value="<%=user.username%>" name="user[username]"
-                                                    required placeholder="Username" />
-                                                    <div class="invalid-feedback">
-                                                        Check Again!
-                                                    </div>
+                                                    value="<%=user.username%>" name="user[username]" required
+                                                    placeholder="Username" />
+                                                <div class="invalid-feedback">
+                                                    Check Again!
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col-xl-4 col-md-6 col-12 mb-1">
@@ -98,9 +99,9 @@
                                                 <label for="password">Password</label>
                                                 <input type="password" class="form-control" id="password"
                                                     name="user[password]" required placeholder="Password" />
-                                                    <div class="invalid-feedback">
-                                                        Check Again!
-                                                    </div>
+                                                <div class="invalid-feedback">
+                                                    Check Again!
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col-xl-4 col-md-6 col-12 mb-1">

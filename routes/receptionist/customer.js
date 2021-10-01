@@ -5,12 +5,22 @@ const router = express.Router();
 const customerController = require("../../controllers/receptionist/customer");
 const catchAsync = require("../../utils/catchAsync");
 
-const { isLoggedIn, isReceptionist, isIdValid, validateCustomerRep, } = require("../../middleware");
+const {
+  isLoggedIn,
+  isReceptionist,
+  isIdValid,
+  validateCustomerRep,
+} = require("../../middleware");
 
 router
   .route("/")
   .get(isLoggedIn, isReceptionist, customerController.index)
-  .post(isLoggedIn, isReceptionist, validateCustomerRep, catchAsync(customerController.store));
+  .post(
+    isLoggedIn,
+    isReceptionist,
+    validateCustomerRep,
+    catchAsync(customerController.store)
+  );
 // .post(isLoggedIn, isReceptionist, validateCustomerRep,catchAsync(customerController.store));
 
 router

@@ -10,7 +10,6 @@ $(function () {
     dt_basic_table_customer = $(".datatables-basic-customer"),
     dt_basic_table_customer_rep = $(".datatables-basic-customer-rep"),
     dt_basic_table_room_avail = $(".datatables-basic-room-avail"),
-    
     dt_basic_table_booking = $(".datatables-basic-booking"),
     dt_basic_table_room = $(".datatables-basic-room"),
     dt_basic_table_ammenity = $(".datatables-basic-ammenity"),
@@ -22,15 +21,12 @@ $(function () {
     dt_multilingual_table = $(".dt-multilingual"),
     assetPath = "../../../app-assets/";
 
-  
   if ($("body").attr("data-framework") === "laravel") {
     assetPath = $("body").attr("data-asset-path");
   }
 
-
   // DataTable with buttons
   // --------------------------------------------------------------------
-
 
   if (dt_basic_table_facility.length) {
     var dt_basic = dt_basic_table_facility.DataTable({
@@ -120,7 +116,7 @@ $(function () {
                   class: "font-small-4 mr-50",
                 }) + "Print",
               className: "dropdown-item",
-              exportOptions: { columns: [1,2,3,4] },
+              exportOptions: { columns: [1, 2, 3, 4] },
             },
             {
               extend: "csv",
@@ -129,7 +125,7 @@ $(function () {
                   class: "font-small-4 mr-50",
                 }) + "Csv",
               className: "dropdown-item",
-              exportOptions: { columns: [1,2,3,4] },
+              exportOptions: { columns: [1, 2, 3, 4] },
             },
             {
               extend: "excel",
@@ -137,7 +133,7 @@ $(function () {
                 feather.icons["file"].toSvg({ class: "font-small-4 mr-50" }) +
                 "Excel",
               className: "dropdown-item",
-              exportOptions: { columns: [1,2,3,4] },
+              exportOptions: { columns: [1, 2, 3, 4] },
             },
             {
               extend: "pdf",
@@ -146,7 +142,7 @@ $(function () {
                   class: "font-small-4 mr-50",
                 }) + "Pdf",
               className: "dropdown-item",
-              exportOptions: { columns: [1,2,3,4] },
+              exportOptions: { columns: [1, 2, 3, 4] },
             },
             {
               extend: "copy",
@@ -154,7 +150,7 @@ $(function () {
                 feather.icons["copy"].toSvg({ class: "font-small-4 mr-50" }) +
                 "Copy",
               className: "dropdown-item",
-              exportOptions: { columns: [1,2,3,4] },
+              exportOptions: { columns: [1, 2, 3, 4] },
             },
           ],
           init: function (api, node, config) {
@@ -311,7 +307,7 @@ $(function () {
                   class: "font-small-4 mr-50",
                 }) + "Print",
               className: "dropdown-item",
-              exportOptions: { columns: [1,2,3] },
+              exportOptions: { columns: [1, 2, 3] },
             },
             {
               extend: "csv",
@@ -320,7 +316,7 @@ $(function () {
                   class: "font-small-4 mr-50",
                 }) + "Csv",
               className: "dropdown-item",
-              exportOptions: { columns: [1,2,3] },
+              exportOptions: { columns: [1, 2, 3] },
             },
             {
               extend: "excel",
@@ -328,7 +324,7 @@ $(function () {
                 feather.icons["file"].toSvg({ class: "font-small-4 mr-50" }) +
                 "Excel",
               className: "dropdown-item",
-              exportOptions: { columns: [1,2,3] },
+              exportOptions: { columns: [1, 2, 3] },
             },
             {
               extend: "pdf",
@@ -337,7 +333,7 @@ $(function () {
                   class: "font-small-4 mr-50",
                 }) + "Pdf",
               className: "dropdown-item",
-              exportOptions: { columns: [1,2,3] },
+              exportOptions: { columns: [1, 2, 3] },
             },
             {
               extend: "copy",
@@ -345,7 +341,7 @@ $(function () {
                 feather.icons["copy"].toSvg({ class: "font-small-4 mr-50" }) +
                 "Copy",
               className: "dropdown-item",
-              exportOptions: { columns: [1,2,3] },
+              exportOptions: { columns: [1, 2, 3] },
             },
           ],
           init: function (api, node, config) {
@@ -502,7 +498,7 @@ $(function () {
                   class: "font-small-4 mr-50",
                 }) + "Print",
               className: "dropdown-item",
-              exportOptions: { columns: [1,2,3,4] },
+              exportOptions: { columns: [1, 2, 3, 4] },
             },
             {
               extend: "csv",
@@ -511,7 +507,7 @@ $(function () {
                   class: "font-small-4 mr-50",
                 }) + "Csv",
               className: "dropdown-item",
-              exportOptions: { columns: [1,2,3,4] },
+              exportOptions: { columns: [1, 2, 3, 4] },
             },
             {
               extend: "excel",
@@ -519,7 +515,7 @@ $(function () {
                 feather.icons["file"].toSvg({ class: "font-small-4 mr-50" }) +
                 "Excel",
               className: "dropdown-item",
-              exportOptions: { columns: [1,2,3,4] },
+              exportOptions: { columns: [1, 2, 3, 4] },
             },
             {
               extend: "pdf",
@@ -528,7 +524,7 @@ $(function () {
                   class: "font-small-4 mr-50",
                 }) + "Pdf",
               className: "dropdown-item",
-              exportOptions: { columns: [1,2,3,4] },
+              exportOptions: { columns: [1, 2, 3, 4] },
             },
             {
               extend: "copy",
@@ -536,7 +532,7 @@ $(function () {
                 feather.icons["copy"].toSvg({ class: "font-small-4 mr-50" }) +
                 "Copy",
               className: "dropdown-item",
-              exportOptions: { columns: [1,2,3,4] },
+              exportOptions: { columns: [1, 2, 3, 4] },
             },
           ],
           init: function (api, node, config) {
@@ -720,7 +716,7 @@ $(function () {
           targets: 4,
           render: function (data, type, full, meta) {
             // console.log(data);
-            return data.map(el=>el.name).join(',');
+            return data.map((el) => el.name).join(",");
           },
         },
         {
@@ -729,7 +725,7 @@ $(function () {
           render: function (data, type, full, meta) {
             // console.log(data.map(el=>el));
             // return full;
-            return data.map(el=>el.name).join(',');
+            return data.map((el) => el.name).join(",");
           },
         },
         {
@@ -799,7 +795,7 @@ $(function () {
                   class: "font-small-4 mr-50",
                 }) + "Print",
               className: "dropdown-item",
-              exportOptions: { columns: [1,2,3,4,5] },
+              exportOptions: { columns: [1, 2, 3, 4, 5] },
             },
             {
               extend: "csv",
@@ -808,7 +804,7 @@ $(function () {
                   class: "font-small-4 mr-50",
                 }) + "Csv",
               className: "dropdown-item",
-              exportOptions: { columns: [1,2,3,4,5] },
+              exportOptions: { columns: [1, 2, 3, 4, 5] },
             },
             {
               extend: "excel",
@@ -816,7 +812,7 @@ $(function () {
                 feather.icons["file"].toSvg({ class: "font-small-4 mr-50" }) +
                 "Excel",
               className: "dropdown-item",
-              exportOptions: { columns: [1,2,3,4,5] },
+              exportOptions: { columns: [1, 2, 3, 4, 5] },
             },
             {
               extend: "pdf",
@@ -825,7 +821,7 @@ $(function () {
                   class: "font-small-4 mr-50",
                 }) + "Pdf",
               className: "dropdown-item",
-              exportOptions: { columns: [1,2,3,4,5] },
+              exportOptions: { columns: [1, 2, 3, 4, 5] },
             },
             {
               extend: "copy",
@@ -833,7 +829,7 @@ $(function () {
                 feather.icons["copy"].toSvg({ class: "font-small-4 mr-50" }) +
                 "Copy",
               className: "dropdown-item",
-              exportOptions: { columns: [1,2,3,4,5] },
+              exportOptions: { columns: [1, 2, 3, 4, 5] },
             },
           ],
           init: function (api, node, config) {
@@ -993,7 +989,7 @@ $(function () {
                   class: "font-small-4 mr-50",
                 }) + "Print",
               className: "dropdown-item",
-              exportOptions: { columns: [1,2,3,4,5,6,7] },
+              exportOptions: { columns: [1, 2, 3, 4, 5, 6, 7] },
             },
             {
               extend: "csv",
@@ -1002,7 +998,7 @@ $(function () {
                   class: "font-small-4 mr-50",
                 }) + "Csv",
               className: "dropdown-item",
-              exportOptions: { columns: [1,2,3,4,5,6,7] },
+              exportOptions: { columns: [1, 2, 3, 4, 5, 6, 7] },
             },
             {
               extend: "excel",
@@ -1010,7 +1006,7 @@ $(function () {
                 feather.icons["file"].toSvg({ class: "font-small-4 mr-50" }) +
                 "Excel",
               className: "dropdown-item",
-              exportOptions: { columns: [1,2,3,4,5,6,7] },
+              exportOptions: { columns: [1, 2, 3, 4, 5, 6, 7] },
             },
             {
               extend: "pdf",
@@ -1019,7 +1015,7 @@ $(function () {
                   class: "font-small-4 mr-50",
                 }) + "Pdf",
               className: "dropdown-item",
-              exportOptions: { columns: [1,2,3,4,5,6,7] },
+              exportOptions: { columns: [1, 2, 3, 4, 5, 6, 7] },
             },
             {
               extend: "copy",
@@ -1027,7 +1023,7 @@ $(function () {
                 feather.icons["copy"].toSvg({ class: "font-small-4 mr-50" }) +
                 "Copy",
               className: "dropdown-item",
-              exportOptions: { columns: [1,2,3,4,5,6,7] },
+              exportOptions: { columns: [1, 2, 3, 4, 5, 6, 7] },
             },
           ],
           init: function (api, node, config) {
@@ -1123,7 +1119,7 @@ $(function () {
           // For Checkboxes
           targets: 1,
           render: function (data, type, full, meta) {
-            return data.fname +" "+ data.lname;
+            return data.fname + " " + data.lname;
           },
         },
         {
@@ -1203,7 +1199,7 @@ $(function () {
                   class: "font-small-4 mr-50",
                 }) + "Print",
               className: "dropdown-item",
-              exportOptions: { columns: [1,2,3,4,5,6,7] },
+              exportOptions: { columns: [1, 2, 3, 4, 5, 6, 7] },
             },
             {
               extend: "csv",
@@ -1212,7 +1208,7 @@ $(function () {
                   class: "font-small-4 mr-50",
                 }) + "Csv",
               className: "dropdown-item",
-              exportOptions: { columns: [1,2,3,4,5,6,7] },
+              exportOptions: { columns: [1, 2, 3, 4, 5, 6, 7] },
             },
             {
               extend: "excel",
@@ -1220,7 +1216,7 @@ $(function () {
                 feather.icons["file"].toSvg({ class: "font-small-4 mr-50" }) +
                 "Excel",
               className: "dropdown-item",
-              exportOptions: { columns: [1,2,3,4,5,6,7] },
+              exportOptions: { columns: [1, 2, 3, 4, 5, 6, 7] },
             },
             {
               extend: "pdf",
@@ -1229,7 +1225,7 @@ $(function () {
                   class: "font-small-4 mr-50",
                 }) + "Pdf",
               className: "dropdown-item",
-              exportOptions: { columns: [1,2,3,4,5,6,7] },
+              exportOptions: { columns: [1, 2, 3, 4, 5, 6, 7] },
             },
             {
               extend: "copy",
@@ -1237,7 +1233,7 @@ $(function () {
                 feather.icons["copy"].toSvg({ class: "font-small-4 mr-50" }) +
                 "Copy",
               className: "dropdown-item",
-              exportOptions: { columns: [1,2,3,4,5,6,7] },
+              exportOptions: { columns: [1, 2, 3, 4, 5, 6, 7] },
             },
           ],
           init: function (api, node, config) {
@@ -1388,7 +1384,7 @@ $(function () {
                   class: "font-small-4 mr-50",
                 }) + "Print",
               className: "dropdown-item",
-              exportOptions: { columns: [1,2,3,4,5,6,7] },
+              exportOptions: { columns: [1, 2, 3, 4, 5, 6, 7] },
             },
             {
               extend: "csv",
@@ -1397,7 +1393,7 @@ $(function () {
                   class: "font-small-4 mr-50",
                 }) + "Csv",
               className: "dropdown-item",
-              exportOptions: { columns: [1,2,3,4,5,6,7] },
+              exportOptions: { columns: [1, 2, 3, 4, 5, 6, 7] },
             },
             {
               extend: "excel",
@@ -1405,7 +1401,7 @@ $(function () {
                 feather.icons["file"].toSvg({ class: "font-small-4 mr-50" }) +
                 "Excel",
               className: "dropdown-item",
-              exportOptions: { columns: [1,2,3,4,5,6,7] },
+              exportOptions: { columns: [1, 2, 3, 4, 5, 6, 7] },
             },
             {
               extend: "pdf",
@@ -1414,7 +1410,7 @@ $(function () {
                   class: "font-small-4 mr-50",
                 }) + "Pdf",
               className: "dropdown-item",
-              exportOptions: { columns: [1,2,3,4,5,6,7] },
+              exportOptions: { columns: [1, 2, 3, 4, 5, 6, 7] },
             },
             {
               extend: "copy",
@@ -1422,7 +1418,7 @@ $(function () {
                 feather.icons["copy"].toSvg({ class: "font-small-4 mr-50" }) +
                 "Copy",
               className: "dropdown-item",
-              exportOptions: { columns: [1,2,3,4,5,6,7] },
+              exportOptions: { columns: [1, 2, 3, 4, 5, 6, 7] },
             },
           ],
           init: function (api, node, config) {
@@ -1578,7 +1574,7 @@ $(function () {
                   class: "font-small-4 mr-50",
                 }) + "Print",
               className: "dropdown-item",
-              exportOptions: { columns: [1,2,3,4] },
+              exportOptions: { columns: [1, 2, 3, 4] },
             },
             {
               extend: "csv",
@@ -1587,7 +1583,7 @@ $(function () {
                   class: "font-small-4 mr-50",
                 }) + "Csv",
               className: "dropdown-item",
-              exportOptions: { columns: [1,2,3,4] },
+              exportOptions: { columns: [1, 2, 3, 4] },
             },
             {
               extend: "excel",
@@ -1595,7 +1591,7 @@ $(function () {
                 feather.icons["file"].toSvg({ class: "font-small-4 mr-50" }) +
                 "Excel",
               className: "dropdown-item",
-              exportOptions: { columns: [1,2,3,4] },
+              exportOptions: { columns: [1, 2, 3, 4] },
             },
             {
               extend: "pdf",
@@ -1604,7 +1600,7 @@ $(function () {
                   class: "font-small-4 mr-50",
                 }) + "Pdf",
               className: "dropdown-item",
-              exportOptions: { columns: [1,2,3,4] },
+              exportOptions: { columns: [1, 2, 3, 4] },
             },
             {
               extend: "copy",
@@ -1612,7 +1608,7 @@ $(function () {
                 feather.icons["copy"].toSvg({ class: "font-small-4 mr-50" }) +
                 "Copy",
               className: "dropdown-item",
-              exportOptions: { columns: [1,2,3,4] },
+              exportOptions: { columns: [1, 2, 3, 4] },
             },
           ],
           init: function (api, node, config) {
@@ -1682,8 +1678,6 @@ $(function () {
     });
     $("div.head-label").html('<h6 class="mb-0">User Details</h6>');
   }
-
-  
 
   // Flat Date picker
   if (dt_date_table.length) {
@@ -2058,5 +2052,4 @@ $(function () {
       },
     });
   }
-
 });

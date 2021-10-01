@@ -7,7 +7,12 @@ const roomController = require("../../controllers/admin/room");
 const catchAsync = require("../../utils/catchAsync");
 
 const { storage } = require("../../cloudinary");
-const { isLoggedIn, isAdmin,isIdValid, validateRoom } = require("../../middleware");
+const {
+  isLoggedIn,
+  isAdmin,
+  isIdValid,
+  validateRoom,
+} = require("../../middleware");
 
 const upload = multer({ storage });
 
@@ -23,8 +28,8 @@ router.route("/all").get(isLoggedIn, isAdmin, roomController.alldata);
 
 router
   .route("/:id")
-  .get(isLoggedIn, isAdmin,isIdValid, roomController.edit)
-  .put(isLoggedIn, isAdmin,isIdValid, catchAsync(roomController.update))
-  .delete(isLoggedIn, isAdmin,isIdValid, catchAsync(roomController.delete));
+  .get(isLoggedIn, isAdmin, isIdValid, roomController.edit)
+  .put(isLoggedIn, isAdmin, isIdValid, catchAsync(roomController.update))
+  .delete(isLoggedIn, isAdmin, isIdValid, catchAsync(roomController.delete));
 
 module.exports = router;

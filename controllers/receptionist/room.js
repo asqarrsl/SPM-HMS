@@ -5,6 +5,6 @@ module.exports.index = (req, res) => {
 };
 
 module.exports.alldata = async (req, res) => {
-  var data = await Room.find({status:1});
+  var data = await Room.find({ status: 1 });
   res.send({ data });
 };

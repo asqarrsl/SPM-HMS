@@ -9,7 +9,7 @@ module.exports.create = async (req, res) => {
 };
 
 module.exports.alldata = async (req, res) => {
-  var data = await Facility.find({status:1});
+  var data = await Facility.find({ status: 1 });
   res.send({ data });
 };
 

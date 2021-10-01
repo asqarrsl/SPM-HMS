@@ -1,4 +1,4 @@
-<% layout('layouts/boilerplate') %> 
+<% layout('layouts/boilerplate') %>
 
 <!-- BEGIN: Content-->
 <div class="app-content content ">
@@ -34,12 +34,13 @@
                                 <h4 class="card-title">Create New Package</h4>
                             </div>
                             <div class="card-body">
-                                <form action="/admin/package/" method="post"  novalidate class="validated-form">
+                                <form action="/admin/package/" method="post" novalidate class="validated-form">
                                     <div class="row">
                                         <div class="col-xl-4 col-md-6 col-12 mb-1">
                                             <div class="form-group">
                                                 <label for="name">Package Name</label>
-                                                <input type="text" class="form-control" id="name" name="package[name]" required placeholder="Package Name" />
+                                                <input type="text" class="form-control" id="name" name="package[name]"
+                                                    required placeholder="Package Name" />
                                                 <div class="invalid-feedback">
                                                     Check Again!
                                                 </div>
@@ -48,7 +49,8 @@
                                         <div class="col-xl-4 col-md-6 col-12 mb-1">
                                             <div class="form-group">
                                                 <label for="amount">Amount</label>
-                                                <input type="text" class="form-control" id="amount" name="package[amount]" required placeholder="Amount" />
+                                                <input type="text" class="form-control" id="amount"
+                                                    name="package[amount]" required placeholder="Amount" />
                                                 <div class="invalid-feedback">
                                                     Check Again!
                                                 </div>
@@ -71,24 +73,34 @@
                                                 <label for="facilities">Facilities</label>
                                                 <div class="row mr-1 ml-1">
                                                     <% for(let facility of data['facility']){ %>
-                                                        <div class="custom-control custom-control-success custom-checkbox mb-1 col-md-6">
-                                                            <input type="checkbox" class="custom-control-input" name="package[facilities]" id="colorCheck<%= facility._id %>" value="<%= facility._id %>">
-                                                            <label class="custom-control-label" for="colorCheck<%= facility._id %>"><%= facility.name  %></label>
-                                                        </div>
+                                                    <div
+                                                        class="custom-control custom-control-success custom-checkbox mb-1 col-md-6">
+                                                        <input type="checkbox" class="custom-control-input"
+                                                            name="package[facilities]"
+                                                            id="colorCheck<%= facility._id %>"
+                                                            value="<%= facility._id %>">
+                                                        <label class="custom-control-label"
+                                                            for="colorCheck<%= facility._id %>"><%= facility.name  %></label>
+                                                    </div>
                                                     <%  } %>
                                                 </div>
                                             </div>
                                         </div>
-                                        
+
                                         <div class="col-xl-6 col-md-6 col-12 mb-1">
                                             <div class="form-group">
                                                 <h5>Ammenities</h5>
                                                 <div class="row mr-1 ml-1">
                                                     <% for(let amenities of data['amenities']){ %>
-                                                        <div class="custom-control custom-control-success custom-checkbox mb-1 col-md-6">
-                                                            <input type="checkbox" class="custom-control-input" name="package[ammenities]" id="colorCheck<%= amenities._id %>" value="<%= amenities._id %>">
-                                                            <label class="custom-control-label" for="colorCheck<%= amenities._id %>"><%= amenities.name  %></label>
-                                                        </div>
+                                                    <div
+                                                        class="custom-control custom-control-success custom-checkbox mb-1 col-md-6">
+                                                        <input type="checkbox" class="custom-control-input"
+                                                            name="package[ammenities]"
+                                                            id="colorCheck<%= amenities._id %>"
+                                                            value="<%= amenities._id %>">
+                                                        <label class="custom-control-label"
+                                                            for="colorCheck<%= amenities._id %>"><%= amenities.name  %></label>
+                                                    </div>
                                                     <%  } %>
                                                 </div>
                                             </div>
@@ -106,7 +118,7 @@
                 </div>
             </section>
             <!-- Basic Inputs end -->
-            </div>
+        </div>
 
     </div>
 </div>

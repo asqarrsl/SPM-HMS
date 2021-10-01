@@ -114,15 +114,18 @@ const connectSrcUrls = [
   "https://b.tiles.mapbox.com/",
   "https://events.mapbox.com/",
 ];
-const fontSrcUrls = [
-  "https://fonts.gstatic.com/"
-];
+const fontSrcUrls = ["https://fonts.gstatic.com/"];
 app.use(
   helmet.contentSecurityPolicy({
     directives: {
       defaultSrc: [],
       connectSrc: ["'self'", ...connectSrcUrls],
-      scriptSrc: ["'unsafe-inline'", "'self'","'unsafe-eval'", ...scriptSrcUrls],
+      scriptSrc: [
+        "'unsafe-inline'",
+        "'self'",
+        "'unsafe-eval'",
+        ...scriptSrcUrls,
+      ],
       styleSrc: ["'self'", "'unsafe-inline'", ...styleSrcUrls],
       workerSrc: ["'self'", "blob:"],
       objectSrc: [],
@@ -152,8 +155,6 @@ app.use((req, res, next) => {
   next();
 });
 
-
-
 app.get("/", (req, res) => {
   res.render("home");
 });
@@ -170,9 +171,6 @@ app.use("/receptionist/customer", repUserRoutes);
 app.use("/receptionist/booking", repbookingRoutes);
 app.use("/receptionist/room", roomRoutes);
 
-
-
-
 app.all("*", (req, res, next) => {
   next(new ExpressError("Page Not Found", 404));
 });
@@ -183,7 +181,7 @@ app.use((err, req, res, next) => {
   res.locals.error = err;
   // res.redirect('back')
   // next();
-  if(statusCode == 404){
+  if (statusCode == 404) {
     res.status(statusCode).render("error/404", { err });
   }
   res.status(statusCode).render("error/error", { err });
