@@ -39,22 +39,28 @@
                                 <h4 class="card-title">Create New Ammenity</h4>
                             </div>
                             <div class="card-body">
-                                <form action="/admin/ammenity/<%= ammenity._id %>?_method=PUT" method="post">
+                                <form action="/admin/ammenity/<%= ammenity._id %>?_method=PUT" method="post" novalidate class="validated-form">
                                     <div class="row">
                                         <div class="col-xl-4 col-md-6 col-12 mb-1">
                                             <div class="form-group">
                                                 <label for="name">Name</label>
                                                 <input type="text" class="form-control" id="name"
                                                     value="<%= ammenity.name  %>" name="ammenity[name]"
-                                                    placeholder="Name" />
+                                                    required placeholder="Name" />
+                                                    <div class="invalid-feedback">
+                                                        Check Again!
+                                                    </div>
                                             </div>
                                         </div>
                                         <div class="col-xl-4 col-md-6 col-12 mb-1">
                                             <div class="form-group">
                                                 <label for="quantity">Quantity</label>
-                                                <input type="text" class="form-control" id="quantity"
+                                                <input type="number" class="form-control" id="quantity"
                                                     value="<%= ammenity.quantity  %>" name="ammenity[quantity]"
-                                                    placeholder="Quantity" />
+                                                    required placeholder="Quantity" />
+                                                    <div class="invalid-feedback">
+                                                        Check Again!
+                                                    </div>
                                             </div>
                                         </div>
                                         <div class="col-xl-4 col-md-6 col-12 mb-1">
@@ -62,7 +68,10 @@
                                                 <label for="price_per_unit">Price Per Unit</label>
                                                 <input type="text" class="form-control" id="price_per_unit"
                                                     value="<%= ammenity.price_per_unit  %>"
-                                                    name="ammenity[price_per_unit]" placeholder="Price Per Unit" />
+                                                    name="ammenity[price_per_unit]" required placeholder="Price Per Unit" />
+                                                    <div class="invalid-feedback">
+                                                        Check Again!
+                                                    </div>
                                             </div>
                                         </div>
                                         <div class="col-xl-12 col-md-12 col-12 mb-1">

@@ -34,34 +34,46 @@
                                 <h4 class="card-title">Create New Facility</h4>
                             </div>
                             <div class="card-body">
-                                <form action="/admin/facility/" method="post">
+                                <form action="/admin/facility/" method="post"  novalidate class="validated-form">
                                     <div class="row">
                                         <div class="col-xl-4 col-md-6 col-12 mb-1">
                                             <div class="form-group">
                                                 <label for="name">Name</label>
                                                 <input type="text" class="form-control" id="name" name="facility[name]"
-                                                    placeholder="Name" />
+                                                    required placeholder="Name" />
+                                                    <div class="invalid-feedback">
+                                                        Check Again!
+                                                    </div>
                                             </div>
                                         </div>
                                         <div class="col-xl-4 col-md-6 col-12 mb-1">
                                             <div class="form-group">
                                                 <label for="duration">Duration</label>
                                                 <input type="text" class="form-control" id="duration"
-                                                    name="facility[duration]" placeholder="Duration" />
+                                                    name="facility[duration]" required placeholder="Duration" />
+                                                    <div class="invalid-feedback">
+                                                        Check Again!
+                                                    </div>
                                             </div>
                                         </div>
                                         <div class="col-xl-4 col-md-6 col-12 mb-1">
                                             <div class="form-group">
                                                 <label for="headcount">Head Count</label>
                                                 <input type="text" class="form-control" id="headcount"
-                                                    name="facility[headcount]" placeholder="Head Count" />
+                                                    name="facility[headcount]" required placeholder="Head Count" />
+                                                    <div class="invalid-feedback">
+                                                        Check Again!
+                                                    </div>
                                             </div>
                                         </div>
                                         <div class="col-xl-4 col-md-6 col-12 mb-1">
                                             <div class="form-group">
                                                 <label for="price">Price</label>
                                                 <input type="text" class="form-control" id="price"
-                                                    name="facility[price]" placeholder="Head Count" />
+                                                    name="facility[price]" required placeholder="Price" />
+                                                    <div class="invalid-feedback">
+                                                        Check Again!
+                                                    </div>
                                             </div>
                                         </div>
                                         <div class="col-xl-12 col-md-12 col-12 mb-1">
