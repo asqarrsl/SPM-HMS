@@ -38,3 +38,57 @@ module.exports.pay = async (req, res) => {
   req.flash("success", "Successfully made a Payment!");
   res.redirect(`/receptionist/booking`);
 };
+
+
+module.exports.checkout = async (req, res) => {
+  const { id } = req.params;
+  const booking = await Booking.findById(id);
+  booking.availability = 0;
+  await booking.save();
+
+
+  let customer_id = booking.customer;
+  let room_id = booking.room;
+
+  const customers = await Customer.findById(customer_id);
+  customers.availability = 0;
+
+  await customers.save();
+
+  const room = await Room.findById(room_id);
+  room.availability = 1;
+
+  await room.save();
+
+  // req.flash("success", "Successfully Checked out!");
+  // res.download(`views/receptionist/booking/reciept.ejs`);
+  res.redirect(`/receptionist/booking`);
+  // res.redirect(`/receptionist/booking/reciept`,{booking});
+
+
+
+
+};
+
+module.exports.reciept = async (req, res) => {
+  const { id } = req.params;
+  const booking = await Booking.findById(id)
+    .populate({
+      path: 'customer',
+      populate:{
+        path:'country'
+      },
+      populate:{
+        path:'state'
+      },
+    }
+    )
+    .populate("room")
+    .populate("package")
+    .populate("ammenities")
+    ;
+
+    const payment = await Payment.find({booking_id:id})
+  res.render("receptionist/booking/reciept",{booking,payment});
+
+};

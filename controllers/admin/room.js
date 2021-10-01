@@ -19,7 +19,7 @@ module.exports.store = async (req, res) => {
   const room = new Room(req.body.room);
   await room.save();
 
-  req.flash("success", "Successfully made a room!");
+  req.flash("success", "Successfully made a Room!");
   res.redirect(`/admin/room`);
 };
 module.exports.edit = async (req, res) => {

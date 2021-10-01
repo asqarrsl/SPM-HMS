@@ -34,14 +34,17 @@
                                 <h4 class="card-title">Create New Room</h4>
                             </div>
                             <div class="card-body">
-                                <form action="/admin/room/<%= room._id %>?_method=PUT" method="post">
+                                <form action="/admin/room/<%= room._id %>?_method=PUT" method="post"  novalidate class="validated-form">
                                     <div class="row">
                                         <div class="col-xl-4 col-md-6 col-12 mb-1">
                                             <div class="form-group">
                                                 <label for="name">Room Number</label>
                                                 <input type="text" class="form-control" id="name"
                                                     value="<%=room.number%>" name="room[number]"
-                                                    placeholder="Room Number" />
+                                                    required placeholder="Room Number" />
+                                                    <div class="invalid-feedback">
+                                                        Check Again!
+                                                    </div>
                                             </div>
                                         </div>
                                         <div class="col-xl-4 col-md-6 col-12 mb-1">
@@ -49,7 +52,10 @@
                                                 <label for="name">Room Charge</label>
                                                 <input type="text" class="form-control" id="name"
                                                     value="<%=room.charge%>" name="room[charge]"
-                                                    placeholder="Room Charge" />
+                                                    required placeholder="Room Charge" />
+                                                    <div class="invalid-feedback">
+                                                        Check Again!
+                                                    </div>
                                             </div>
                                         </div>
                                         <div class="col-xl-4 col-md-6 col-12 mb-1">
@@ -57,27 +63,27 @@
                                                 <label for="name">Head Count</label>
                                                 <input type="text" class="form-control" id="name"
                                                     value="<%=room.headcount%>" name="room[headcount]"
-                                                    placeholder="Head Count" />
-                                            </div>
-                                        </div>
-                                        <div class="col-xl-4 col-md-6 col-12 mb-1">
-                                            <div class="form-group">
-                                                <label for="name">Image </label>
-                                                <input type="text" class="form-control" id="name"
-                                                    value="<%=room.image%>" name="room[image]" placeholder="Image" />
+                                                    required placeholder="Head Count" />
+                                                    <div class="invalid-feedback">
+                                                        Check Again!
+                                                    </div>
                                             </div>
                                         </div>
                                         <div class="col-xl-4 col-md-6 col-12 mb-1">
                                             <div class="form-group">
                                                 <label for="type">Type</label>
-                                                <select class="form-control" id="type" name="room[type]">
+                                                <select required class="form-control" id="type" name="room[type]">
                                                     <option value="Seasonal" <%=(room.type=="Seasonal")?'selected':''%>>
                                                         Seasonal</option>
                                                     <option value="Regular" <%=(room.type=="Regular")?'selected':''%>>
                                                         Regular</option>
                                                 </select>
+                                                <div class="invalid-feedback">
+                                                    Check Again!
+                                                </div>
                                             </div>
                                         </div>
+
                                         <div class="col-xl-12 col-md-12 col-12 mb-1">
                                             <div class="form-group">
                                                 <button class="btn btn-primary" type="submit">Submit</button>

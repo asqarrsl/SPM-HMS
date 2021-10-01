@@ -34,43 +34,66 @@
                                 <h4 class="card-title">Create New Room</h4>
                             </div>
                             <div class="card-body">
-                                <form action="/admin/room/" method="post">
+                                <form action="/admin/room/" method="post" novalidate class="validated-form"  >
                                     <div class="row">
                                         <div class="col-xl-4 col-md-6 col-12 mb-1">
                                             <div class="form-group">
-                                                <label for="name">Room Number</label>
-                                                <input type="text" class="form-control" id="name" name="room[number]"
-                                                    placeholder="Room Number" />
+                                                <label for="number">Room Number</label>
+                                                <input type="text" class="form-control" id="number" name="room[number]"
+                                                   required placeholder="Room Number" />
+                                                    <div class="invalid-feedback">
+                                                        Check Again!
+                                                    </div>
                                             </div>
                                         </div>
                                         <div class="col-xl-4 col-md-6 col-12 mb-1">
                                             <div class="form-group">
-                                                <label for="name">Room Charge</label>
-                                                <input type="text" class="form-control" id="name" name="room[charge]"
-                                                    placeholder="Room Charge" />
+                                                <label for="charge">Room Charge</label>
+                                                <input type="text" class="form-control" id="charge" name="room[charge]"
+                                                   required placeholder="Room Charge" />
+                                                    <div class="invalid-feedback">
+                                                        Check Again!
+                                                    </div>
                                             </div>
                                         </div>
                                         <div class="col-xl-4 col-md-6 col-12 mb-1">
                                             <div class="form-group">
-                                                <label for="name">Head Count</label>
-                                                <input type="text" class="form-control" id="name" name="room[headcount]"
-                                                    placeholder="Head Count" />
+                                                <label for="headcount">Head Count</label>
+                                                <input type="text" class="form-control" id="headcount" name="room[headcount]"
+                                                   required placeholder="Head Count" />
+                                                    <div class="invalid-feedback">
+                                                        Check Again!
+                                                    </div>
                                             </div>
                                         </div>
-                                        <div class="col-xl-4 col-md-6 col-12 mb-1">
+                                        <!-- <div class="col-xl-4 col-md-6 col-12 mb-1">
+                                            
                                             <div class="form-group">
                                                 <label for="name">Image </label>
-                                                <input type="text" class="form-control" id="name" name="room[image]"
-                                                    placeholder="Image" />
+                                                <div class="input-group mb-3">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text"
+                                                            id="inputGroupFileAddon01">Image</span>
+                                                    </div>
+                                                    <div class="custom-file">
+                                                        <input type="file" class="custom-file-input" id="image" name="image"
+                                                            aria-describedby="inputGroupFileAddon01" multiple>
+                                                        <label class="custom-file-label" for="image">Choose
+                                                            Image</label>
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
+                                        </div> -->
                                         <div class="col-xl-4 col-md-6 col-12 mb-1">
                                             <div class="form-group">
                                                 <label for="type">Type</label>
-                                                <select class="form-control" id="type" name="room[type]">
+                                                <select required class="form-control" id="type" name="room[type]">
                                                     <option value="Seasonal">Seasonal</option>
                                                     <option value="Regular">Regular</option>
                                                 </select>
+                                                <div class="invalid-feedback">
+                                                    Check Again!
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col-xl-12 col-md-12 col-12 mb-1">
