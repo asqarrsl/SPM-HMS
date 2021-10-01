@@ -1,0 +1,90 @@
+<% layout('layouts/boilerplate') %>
+
+<!-- BEGIN: Content-->
+<div class="app-content content ">
+    <div class="content-overlay"></div>
+    <div class="header-navbar-shadow"></div>
+    <div class="content-wrapper">
+        <div class="content-header row">
+        </div>
+        <div class="content-body">
+            <!-- Dashboard Analytics Start -->
+            <section id="dashboard-analytics">
+                <div class="row match-height">
+                    
+                    <!-- Orders Chart Card starts -->
+                    <div class="col-lg-3 col-sm-6 col-12">
+                        <div class="card">
+                            <div class="card-header flex-column align-items-start pb-0">
+                                <div class="avatar bg-light-warning p-50 m-0">
+                                    <div class="avatar-content">
+                                        <i data-feather="package" class="font-medium-5"></i>
+                                    </div>
+                                </div>
+                                <h2 class="font-weight-bolder mt-1"><%= data['rooms_available'].length  %></h2>
+                                <p class="card-text">Rooms Available</p>
+                            </div>
+                            <div id="order-chart"></div>
+                        </div>
+                    </div>
+                    <!-- Orders Chart Card ends -->
+
+                    <!-- Subscribers Chart Card starts -->
+                    <div class="col-lg-3 col-sm-6 col-12">
+                        <div class="card">
+                            <div class="card-header flex-column align-items-start pb-0">
+                                <div class="avatar bg-light-primary p-50 m-0">
+                                    <div class="avatar-content">
+                                        <i data-feather="users" class="font-medium-5"></i>
+                                    </div>
+                                </div>
+                                <h2 class="font-weight-bolder mt-1"><%= data['customers'].length  %> </h2>
+                                <p class="card-text">Booked Customers</p>
+                            </div>
+                            <div id="gained-chart"></div>
+                        </div>
+                    </div>
+                    <!-- Subscribers Chart Card ends -->
+
+                    <!-- Orders Chart Card starts -->
+                    <div class="col-lg-3 col-sm-6 col-12">
+                        <div class="card">
+                            <div class="card-header flex-column align-items-start pb-0">
+                                <div class="avatar bg-light-warning p-50 m-0">
+                                    <div class="avatar-content">
+                                        <i data-feather="package" class="font-medium-5"></i>
+                                    </div>
+                                </div>
+                                <h2 class="font-weight-bolder mt-1"><%= data['rooms_book'].length  %></h2>
+                                <p class="card-text">Booked Rooms</p>
+                            </div>
+                            <div id="order-chart"></div>
+                        </div>
+                    </div>
+                    <!-- Orders Chart Card ends -->
+
+                    <!-- Orders Chart Card starts -->
+                    <div class="col-lg-3 col-sm-6 col-12">
+                        <div class="card">
+                            <div class="card-header flex-column align-items-start pb-0">
+                                <div class="avatar bg-light-warning p-50 m-0">
+                                    <div class="avatar-content">
+                                        <i data-feather="package" class="font-medium-5"></i>
+                                    </div>
+                                </div>
+                                <h2 class="font-weight-bolder mt-1"><%= data['booking'].length  %></h2>
+                                <p class="card-text">Current Bookings</p>
+                            </div>
+                            <div id="order-chart"></div>
+                        </div>
+                    </div>
+                    <!-- Orders Chart Card ends -->
+
+                </div>
+            </section>
+            <!-- Dashboard Analytics end -->
+
+        </div>
+    </div>
+</div>
+<!-- END: Content-->

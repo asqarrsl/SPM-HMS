@@ -1,5 +1,26 @@
 const User = require("../models/user");
 
+const Customer = require("../models/customer");
+const Room = require("../models/room");
+const Booking = require("../models/room_booking");
+const User = require("../models/user");
+
+module.exports.renderProfile = async (req, res) => {
+  const user = await User.findById(req.user.id);
+  res.render("user/profile", { user });
+};
+
+module.exports.update = async (req, res) => {
+  const id = req.user.id;
+  const user = await User.findByIdAndUpdate(id, {
+    ...req.body.user,
+  });
+  await user.save();
+
+  req.flash("success", "Successfully Updated Your Account!");
+  res.redirect(`/profile`);
+};
+
 module.exports.renderRegister = (req, res) => {
   res.render("user/register");
 };

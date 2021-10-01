@@ -34,49 +34,63 @@
                                 <h4 class="card-title">Create New Room</h4>
                             </div>
                             <div class="card-body">
-                                <form action="/admin/package/<%= package._id %>?_method=PUT" method="post">
+                                <form action="/admin/package/<%= package._id %>?_method=PUT" method="post"  novalidate class="validated-form">
                                     <div class="row">
                                         <div class="col-xl-4 col-md-6 col-12 mb-1">
                                             <div class="form-group">
                                                 <label for="name">Package Name</label>
-                                                <input type="text" class="form-control" id="name" value="<%= package.name  %>" name="package[name]" placeholder="Package Name" />
+                                                <input type="text" class="form-control" id="name" value="<%= package.name  %>" name="package[name]" required placeholder="Package Name" />
+                                                <div class="invalid-feedback">
+                                                    Check Again!
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col-xl-4 col-md-6 col-12 mb-1">
                                             <div class="form-group">
                                                 <label for="amount">Amount</label>
-                                                <input type="text" class="form-control" id="amount" value="<%= package.amount  %>" name="package[amount]" placeholder="Amount" />
+                                                <input type="text" class="form-control" id="amount" value="<%= package.amount  %>" name="package[amount]" required placeholder="Amount" />
+                                                <div class="invalid-feedback">
+                                                    Check Again!
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col-xl-4 col-md-6 col-12 mb-1">
                                             <div class="form-group">
                                                 <label for="type">Type</label>
-                                                <select class="form-control" id="type" value="<%= package.type  %>" name="package[type]">
+                                                <select class="form-control" required id="type" value="<%= package.type  %>" name="package[type]">
                                                     <option value="Seasonal">Seasonal</option>
                                                     <option value="Regular">Regular</option>
                                                 </select>
+                                                <div class="invalid-feedback">
+                                                    Check Again!
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="col-xl-4 col-md-6 col-12 mb-1">
+                                        <div class="col-xl-6 col-md-6 col-12 mb-1 m">
                                             <div class="form-group">
                                                 <label for="facilities">Facilities</label>
-                                                <select class="form-control" id="facilities" value="<%= package.facilities  %>" name="package[facilities]">
-                                                    <option label="Select Facilities"></option>
+                                                <div class="row mr-1 ml-1">
                                                     <% for(let facility of data['facility']){ %>
-                                                        <option value="<%= facility._id %> "><%= facility.name  %> </option>
+                                                        <div class="custom-control custom-control-success custom-checkbox mb-1 col-md-6">
+                                                            <input type="checkbox" class="custom-control-input" name="package[facilities]" id="colorCheck<%= facility._id %>" value="<%= facility._id %>" <%= (package.facilities.includes(facility._id))?'checked':''  %>>
+                                                            <label class="custom-control-label" for="colorCheck<%= facility._id %>"><%= facility.name  %></label>
+                                                        </div>
                                                     <%  } %>
-                                                </select>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="col-xl-4 col-md-6 col-12 mb-1">
+                                        
+                                        <div class="col-xl-6 col-md-6 col-12 mb-1">
                                             <div class="form-group">
-                                                <label for="ammenities">Ammenities</label>
-                                                <select class="form-control" id="ammenities" value="<%= package.ammenities  %>" name="package[ammenities]">
-                                                    <option label="Select Ammenities"></option>
+                                                <h5>Ammenities</h5>
+                                                <div class="row mr-1 ml-1">
                                                     <% for(let amenities of data['amenities']){ %>
-                                                        <option value="<%= amenities._id %>"><%= amenities.name  %> </option>
+                                                        <div class="custom-control custom-control-success custom-checkbox mb-1 col-md-6">
+                                                            <input type="checkbox" class="custom-control-input" name="package[ammenities]" id="colorCheck<%= amenities._id %>" value="<%= amenities._id %>" <%= (package.ammenities.includes(amenities._id))?'checked':''  %>>
+                                                            <label class="custom-control-label" for="colorCheck<%= amenities._id %>"><%= amenities.name  %></label>
+                                                        </div>
                                                     <%  } %>
-                                                </select>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col-xl-12 col-md-12 col-12 mb-1">
