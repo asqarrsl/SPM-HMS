@@ -6,7 +6,6 @@ const extension = (joi) => ({
     messages:{
         'string.escapeHTML' : '{{#label}} must not include HTML'
     },
-<<<<<<< HEAD
     rules:{
         escapeHTML:{
             validate(value,helpers){
@@ -20,11 +19,6 @@ const extension = (joi) => ({
         }
     }
 })
-=======
-  },
-});
-
->>>>>>> 681bcb755f9be267b87f2ffa13da34a4fdfa84f8
 const Joi = BaseJoi.extend(extension);
 module.exports.campgroundSchema = Joi.object({
   campground: Joi.object({

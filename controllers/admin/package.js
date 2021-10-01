@@ -14,13 +14,7 @@ module.exports.create = async (req, res) => {
 };
 
 module.exports.alldata = async (req, res) => {
-<<<<<<< HEAD
   var data = await Package.find({ status: 1 }).populate('facilities').populate('ammenities');
-=======
-  var data = await Package.find({ status: 1 })
-    .populate("facilities")
-    .populate("ammenities");
->>>>>>> 681bcb755f9be267b87f2ffa13da34a4fdfa84f8
   res.send({ data });
 };
 
