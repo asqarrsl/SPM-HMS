@@ -29,16 +29,19 @@ receipt would be provided by the system.
 customer data if necessary, managing room data, managing package data, and handling the facilities and amenities.
 
 ===================== Technologies =====================
+
 Javascript
 HTML - CSS
 PHP
 EJS
 
 ===================== Requirements =====================
+
 1. NodeJS should be installed 
 2. VS-code or other IDE or editor 
 
 ===================== Procedure to setup =====================
+
 1. In terminal : NPM install, NPM start
 2. Application should launch on browser
 3. Login either as receptionist or administrator (UN - admin, PW - admin)
