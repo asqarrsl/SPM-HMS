@@ -2,7 +2,7 @@ Group ID - Reg_WE_16
 
 Project name - SPM-HMS
 
-========================================== Member details ============================================
+===================== Member details =====================
 
 Student ID	Student Name
 IT19050904	R. P. Pasindu Kanchana
@@ -10,7 +10,7 @@ IT19243740	A. A. M. Ashique Ar Rasool
 IT19008356	P. D. S Fernando
 IT19190808	Weerasekera N. W. L. V. T
 
-========================================== Project description ==========================================
+===================== Project description =====================
 
 Hotel Management System. The system is a web application which would be used by hotel staff (receptionist) and administrator to manage user data 
 and booking data of the hotel. The reason the system is made as web application instead of a desktop application is because it would be easy access, 
@@ -28,17 +28,17 @@ receipt would be provided by the system.
  The administrator would overlook all these functionalities as well as handling the data related to adding or removing users from the system, handling 
 customer data if necessary, managing room data, managing package data, and handling the facilities and amenities.
 
-========================================== Technologies ==========================================
+===================== Technologies =====================
 Javascript
 HTML - CSS
 PHP
 EJS
 
-========================================== Requirements ==========================================
+===================== Requirements =====================
 1. NodeJS should be installed 
 2. VS-code or other IDE or editor 
 
-========================================== Procedure to setup ==========================================
+===================== Procedure to setup =====================
 1. In terminal : NPM install, NPM start
 2. Application should launch on browser
 3. Login either as receptionist or administrator (UN - admin, PW - admin)
