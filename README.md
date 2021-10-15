@@ -4,11 +4,16 @@ Project name - SPM-HMS
 
 ===================== Member details =====================
 
-Student ID	Student Name
-IT19050904	R. P. Pasindu Kanchana
-IT19243740	A. A. M. Ashique Ar Rasool
-IT19008356	P. D. S Fernando
-IT19190808	Weerasekera N. W. L. V. T
+Student ID  	Student Name
+
+
+IT19050904  	R. P. Pasindu Kanchana
+
+IT19243740	  A. A. M. Ashique Ar Rasool
+
+IT19008356  	P. D. S Fernando
+
+IT19190808	  Weerasekera N. W. L. V. T
 
 ===================== Project description =====================
 
